@@ -1,0 +1,13 @@
+{
+  "root": true,
+  "extends": [
+    "standard",
+    "prettier",
+    "eslint:recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "./.eslintrc.base.json",
+  ],
+}
