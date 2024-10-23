@@ -7,12 +7,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "registry": "https://npm.pkg.github.com/",
-  "command": {
-    "publish": {
-      "registry": "https://npm.pkg.github.com/"
-    }
-  },
+  "registry": "https://registry.npmjs.org/",
   "scripts": {
     "prepare": "husky",
     "format:check": "prettier --check .",
