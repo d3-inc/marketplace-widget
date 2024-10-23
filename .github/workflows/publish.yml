@@ -1,4 +1,4 @@
-name: Publish marketplace-widget to npm
+name: Publish @d3-inc/marketplace-widget to npm
 
 on:
   push:
@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18.18.2'
+          registry-url: 'https://registry.npmjs.org/'
+          scope: '@d3-inc'
 
       - name: Configure npm for authentication
         run: npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
@@ -29,6 +31,6 @@ jobs:
         run: yarn build:widget
 
       - name: Publish widget to npm
-        run: yarn publish:widget --access public
+        run: yarn publish:widget
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
