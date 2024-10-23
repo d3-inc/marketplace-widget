@@ -491,6 +491,7 @@ __metadata:
     "@types/react-dom": "npm:^18"
     "@types/react-query": "npm:^1.2.9"
     autoprefixer: "npm:^10.4.20"
+    buffer: "npm:^6.0.3"
     class-variance-authority: "npm:^0.7.0"
     clsx: "npm:^2.1.1"
     concurrently: "npm:^9.0.1"

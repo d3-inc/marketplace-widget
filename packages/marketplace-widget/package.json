@@ -1,6 +1,6 @@
 {
   "name": "@d3-inc/marketplace-widget",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "type": "module",
   "description": "D3 marketplace widget for name tokens purchase",
   "author": "d3-inc",
@@ -41,6 +41,7 @@
     "build:css": "postcss src/styles.css -o dist/styles.css --minify"
   },
   "dependencies": {
+    "buffer": "^6.0.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.441.0",

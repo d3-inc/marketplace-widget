@@ -1,5 +1,3 @@
-# Project
-
 ## Getting Started
 
 ## installation
