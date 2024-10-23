@@ -19,7 +19,7 @@ export const Widget = ({ config }: WidgetConfig) => {
 
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
   const setWidgetConfig = useStore(useCallback((state) => state.setWidgetConfig, []));
-  const { setTheme } = useTheme();
+  const { setTheme, theme } = useTheme();
 
   useEffect(() => {
     if (config.apiKey) {
@@ -47,6 +47,7 @@ export const Widget = ({ config }: WidgetConfig) => {
       <div className="d3">
         <TooltipProvider>
           <WidgetButton
+            theme={theme}
             isWidgetOpen={isWidgetOpen}
             onClick={() => setIsWidgetOpen((old) => !old)}
           />

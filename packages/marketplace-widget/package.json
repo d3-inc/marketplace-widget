@@ -26,7 +26,8 @@
     "./styles.css": "./dist/styles.css"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "lint": "eslint --ext .tsx --ext .ts --ext .jsx --ext .js ./src",
