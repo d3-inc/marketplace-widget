@@ -41,7 +41,7 @@ export const CartPaymentMethods = ({
             }
           }}
         >
-          <SelectTrigger className="w-[200px]">
+          <SelectTrigger className="w-[200px] rounded-xl">
             <SelectValue placeholder="Select Payment" aria-label="select payment method" />
           </SelectTrigger>
           <SelectContent>

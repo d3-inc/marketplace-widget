@@ -43,6 +43,7 @@ export const ActionButtons = ({
 
   return (
     <Button
+      variant="outline"
       className="opacity-0 group-hover:opacity-100 absolute right-2 transition-opacity ease-in-out delay-0 duration-150"
       onClick={() => handleCartAction(searchResult)}
     >

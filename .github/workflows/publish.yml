@@ -1,0 +1,34 @@
+name: Publish marketplace-widget to npm
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # allows manual triggering of the workflow
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.18.2'
+
+      - name: Configure npm for authentication
+        run: npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build widget
+        run: yarn build:widget
+
+      - name: Publish widget to npm
+        run: yarn publish:widget --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
