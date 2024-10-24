@@ -21,9 +21,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
           scope: '@d3-inc'
 
-      - name: Configure npm for authentication
-        run: npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
-
       - name: Install dependencies
         run: yarn install
 
