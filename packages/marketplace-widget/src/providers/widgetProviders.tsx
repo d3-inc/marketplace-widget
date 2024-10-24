@@ -11,13 +11,17 @@ interface WidgetProviderProps {
   children: ReactNode;
   config: WidgetConfig;
 }
+// `@coinbase-wallet/sdk` uses `Buffer`
+declare const window: {
+  Buffer: unknown;
+} & Window;
 
 const WalletProvider: React.FC<WidgetProviderProps> = ({ children, config }) => {
   const wagmiConfig = useMemo(() => getWagmiConfig(config), [config]);
   useEffect(() => {
     // Ensure Buffer is globally available in browser
-    if (typeof (window as unknown).Buffer === 'undefined') {
-      (window as unknown).Buffer = Buffer;
+    if (typeof window.Buffer === 'undefined') {
+      window.Buffer = Buffer;
     }
   }, []);
   return (
