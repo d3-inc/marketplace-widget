@@ -7,7 +7,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "registry": "https://registry.npmjs.org/",
   "scripts": {
     "prepare": "husky",
     "format:check": "prettier --check .",
