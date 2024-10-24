@@ -12,9 +12,10 @@
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "dev": "yarn workspace widget-test-app dev",
+    "build:app": "yarn workspace widget-test-app build",
     "watch:widget": "yarn workspace @d3-inc/marketplace-widget watch",
     "build:widget": "yarn workspace @d3-inc/marketplace-widget build",
-    "publish:widget": "yarn workspace @d3-inc/marketplace-widget npm publish --access=public",
+    "publish:widget": "yarn workspace @d3-inc/marketplace-widget npm publish --access public",
     "postinstall": "husky"
   },
   "devDependencies": {
