@@ -1,6 +1,6 @@
 {
   "name": "@d3-inc/marketplace-widget",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "description": "D3 marketplace widget for name tokens purchase",
   "author": "d3-inc",
