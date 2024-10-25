@@ -14,7 +14,8 @@ function App() {
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src={'https://d3.app/favicon.png'} className="logo" alt="Vite logo" />
         </a>
-        <h2 style={{ fontWeight: 700 }}>D3 Marketplace Widget</h2>
+        <h2 style={{ fontWeight: 500 }}>D3 Marketplace Widget</h2>
+        <p>This is a test app for D3 marketplace widget playground</p>
       </div>
       <D3Widget
         appName="Widget Test app"
