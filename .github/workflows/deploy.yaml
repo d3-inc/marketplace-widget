@@ -23,18 +23,13 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Set environment variables # Add environment variables here
-        run: |
-          echo "VITE_D3_API_KEY=${{ secrets.VITE_D3_API_KEY }}" >> packages/widget-test-app/.env
-          echo "VITE_TLDS=shib,core" >> packages/widget-test-app/.env
-          echo "VITE_API_ENDPOINT=https://api-public-dev.d3.app" >> packages/widget-test-app/.env
-
       - name: Build the widget test app for production
         run: yarn build:app
+        env:
+          VITE_D3_API_KEY: ${{ secrets.VITE_D3_API_KEY }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           publish_dir: packages/widget-test-app/dist
