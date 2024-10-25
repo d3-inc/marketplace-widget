@@ -10,12 +10,12 @@ const walletConnectKey = import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID;
 function App() {
   return (
     <>
-      <div className="flex gap-3 items-center justify-center">
+      <div className="flex gap-3 items-center justify-center flex-col">
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src={'https://d3.app/favicon.png'} className="logo" alt="Vite logo" />
         </a>
         <h2 style={{ fontWeight: 500 }}>D3 Marketplace Widget</h2>
-        <p>This is a test app for D3 marketplace widget playground</p>
+        <p>D3 marketplace widget playground</p>
       </div>
       <D3Widget
         appName="Widget Test app"

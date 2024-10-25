@@ -479,7 +479,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@d3-inc/marketplace-widget@workspace:^, @d3-inc/marketplace-widget@workspace:packages/marketplace-widget":
+"@d3-inc/marketplace-widget@npm:0.1.5, @d3-inc/marketplace-widget@workspace:packages/marketplace-widget":
   version: 0.0.0-use.local
   resolution: "@d3-inc/marketplace-widget@workspace:packages/marketplace-widget"
   dependencies:
@@ -12395,7 +12395,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "widget-test-app@workspace:packages/widget-test-app"
   dependencies:
-    "@d3-inc/marketplace-widget": "workspace:^"
+    "@d3-inc/marketplace-widget": "npm:0.1.5"
     "@eslint/js": "npm:^9.9.0"
     "@rainbow-me/rainbowkit": "npm:2.1.7"
     "@tanstack/react-query": "npm:^5.56.2"
