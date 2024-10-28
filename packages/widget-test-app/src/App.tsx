@@ -20,7 +20,7 @@ function App() {
       <D3Widget
         appName="Widget Test app"
         config={{
-          appearance: d3WidgetAppearance,
+          appearance: 'dark',
           apiKey: d3ApiKey,
           showRecommendations: true,
           tlds: widgetTlds,

@@ -84,7 +84,7 @@ export function CartItems({
     >
       <ScrollArea
         className={clsx(
-          'h-9/12 w-full px-2',
+          'h-9/12 w-full px-3',
           isWalletIntegrationMode ? 'max-h-[335px]' : 'max-h-[385px]',
         )}
       >

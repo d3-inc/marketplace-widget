@@ -27,7 +27,7 @@ export const CartPaymentMethods = ({
   const cart = useStore(useShallow((state) => state.cart));
   const paymentMethods = paymentOptions?.options;
   return (
-    <div className="flex justify-between items-center gap-2 px-2 mb-1">
+    <div className="flex justify-between items-center gap-2 px-3 mb-1">
       <h3 className={cn('text-md font-semibold text-left')}>Payment Method</h3>
       <div>
         <Select

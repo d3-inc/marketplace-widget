@@ -21,7 +21,7 @@ export const PurchaseSuccess = ({ handleSearch }: PurchaseSuccessProps) => {
           <Search className="mr-2 h-4 w-4" />
           Browse Names
         </Button>
-        <Button onClick={() => window.open('https://dev.d3.app/login')} aria-label={'view assets'}>
+        <Button onClick={() => window.open('https://d3.app/login')} aria-label={'view assets'}>
           <ExternalLink className="mr-2 h-4 w-4" />
           View Assets
         </Button>

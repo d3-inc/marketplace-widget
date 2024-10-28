@@ -30,14 +30,14 @@ export const CartView = () => {
 
   if (checkoutState.isOrderSuccess) {
     return (
-      <div className="px-2 flex flex-col gap-y-2 flex-grow">
+      <div className="px-3 flex flex-col gap-y-2 flex-grow">
         <PurchaseSuccess handleSearch={handleSearchView} />
       </div>
     );
   }
   if (isPaymentOptionsLoading) {
     return (
-      <div className="px-2 flex items-center justify-center my-5">
+      <div className="px-3 flex items-center justify-center my-5">
         <Loader2 className="h-6 w-6 animate-spin" />
       </div>
     );

@@ -39,7 +39,7 @@ export const Search = () => {
       <div id="search-results" className={cn('flex flex-col flex-grow gap-3 overflow-auto pb-2')}>
         <ScrollArea
           className={clsx(
-            'h-9/12 px-2',
+            'h-9/12 px-3',
             isWalletIntegrationMode ? 'max-h-[375px]' : 'max-h-[425px]',
           )}
         >

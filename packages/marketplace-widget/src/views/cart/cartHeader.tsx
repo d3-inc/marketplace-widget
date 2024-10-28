@@ -8,7 +8,7 @@ type CartHeaderProps = {
 
 export const CartHeader = ({ handleBack }: CartHeaderProps) => {
   return (
-    <div className="flex justify-between p-2">
+    <div className="flex justify-between p-3">
       <div className="flex gap-2 items-center">
         <Button
           size="icon"
