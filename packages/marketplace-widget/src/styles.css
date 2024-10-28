@@ -38,6 +38,10 @@
 
       --radius: 0.5rem;
       --primary-foreground: 0 0% 100%;
+
+      .gradientOutlineButton:before {
+        background: #fff !important;
+      }
     }
 
     .dark {
@@ -79,6 +83,9 @@
       button {
         color: #fff;
       }
+      .gradientOutlineButton:before {
+        background: #12122b !important;
+      }
     }
   }
   @layer base {
@@ -91,7 +98,7 @@
     .gradientOutlineButton {
       border: none !important;
       position: relative;
-      z-index: 1;
+      z-index: 2;
       border-radius: 10px !important;
       background: linear-gradient(90deg, #994ad8 0.01%, #6466f1 100%);
     }
@@ -103,11 +110,9 @@
       top: 1px;
       bottom: 1px;
       border-radius: 9px;
-      background: #fff !important;
       z-index: -1;
       transition: 200ms;
     }
-
     .gradientOutlineButton:after {
       content: attr(data);
       font-size: 16px;
@@ -116,7 +121,6 @@
       color: transparent;
       transition: 200ms;
     }
-
     .gradientOutlineButton:hover:before {
       opacity: 50%;
       top: 0px;
@@ -124,7 +128,6 @@
       bottom: 0px;
       left: 0px;
     }
-
     .gradientOutlineButton:hover:after {
       color: #fff I !important;
     }
