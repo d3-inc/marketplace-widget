@@ -41,6 +41,9 @@ module.exports = {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
+        outline: {
+          background: 'var(--outline)',
+        },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
@@ -62,6 +65,9 @@ module.exports = {
           foreground: 'hsl(var(--card-foreground))',
         },
         'dark-purple-900': 'var(--dark-purple-900)',
+      },
+      boxShadow: {
+        lg: '0px 4px 15px 0px #00000026',
       },
       borderRadius: {
         lg: `var(--radius)`,

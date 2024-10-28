@@ -85,7 +85,9 @@ export function CartItems({
       <ScrollArea
         className={clsx(
           'h-9/12 w-full px-3',
-          isWalletIntegrationMode ? 'max-h-[335px]' : 'max-h-[385px]',
+          isWalletIntegrationMode
+            ? 'max-h-[62dvh] md:max-h-[315px]'
+            : 'max-h-[71dvh] md:max-h-[365px]',
         )}
       >
         <div id="cart-items-container" className={cn('flex flex-col flex-grow gap-y-4 py-3 pe-2')}>

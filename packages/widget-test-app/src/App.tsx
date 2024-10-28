@@ -15,12 +15,11 @@ function App() {
           <img src={'https://d3.app/favicon.png'} className="logo" alt="Vite logo" />
         </a>
         <h2 style={{ fontWeight: 500 }}>D3 Marketplace Widget</h2>
-        <p>Widget playground</p>
       </div>
       <D3Widget
         appName="Widget Test app"
         config={{
-          appearance: 'dark',
+          appearance: d3WidgetAppearance,
           apiKey: d3ApiKey,
           showRecommendations: true,
           tlds: widgetTlds,

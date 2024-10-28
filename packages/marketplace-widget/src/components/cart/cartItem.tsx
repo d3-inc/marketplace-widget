@@ -14,7 +14,7 @@ export type CartItemProps = {
 export const CartItem = ({ cartItem, handleCartAction, disabled }: CartItemProps) => {
   const isDomainAvailable = cartItem?.status?.toLowerCase() === 'available';
   return (
-    <Card className="drop-shadow-lg border-none rounded-xl w-full relative">
+    <Card className="drop-shadow-md border-none rounded-xl w-full relative">
       <CardContent className="grid px-3 py-2">
         <div className="flex items-center gap-2 justify-between">
           <div className="flex-1 space-y-1">

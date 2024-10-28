@@ -37,6 +37,7 @@
       --ring: 215 20.2% 65.1%;
 
       --radius: 0.5rem;
+      --primary-foreground: 0 0% 100%;
     }
 
     .dark {
@@ -73,18 +74,59 @@
 
       --radius: 0.5rem;
 
+      --outline: #12122b;
+
       button {
         color: #fff;
       }
     }
   }
-
   @layer base {
     body {
       @apply bg-background text-foreground;
       font-feature-settings:
         'rlig' 1,
         'calt' 1;
+    }
+    .gradientOutlineButton {
+      border: none !important;
+      position: relative;
+      z-index: 1;
+      border-radius: 10px !important;
+      background: linear-gradient(90deg, #994ad8 0.01%, #6466f1 100%);
+    }
+    .gradientOutlineButton:before {
+      content: '';
+      position: absolute;
+      left: 1px;
+      right: 1px;
+      top: 1px;
+      bottom: 1px;
+      border-radius: 9px;
+      background: #fff !important;
+      z-index: -1;
+      transition: 200ms;
+    }
+
+    .gradientOutlineButton:after {
+      content: attr(data);
+      font-size: 16px;
+      background: linear-gradient(90deg, #994ad8 0.01%, #6466f1 100%);
+      background-clip: text;
+      color: transparent;
+      transition: 200ms;
+    }
+
+    .gradientOutlineButton:hover:before {
+      opacity: 50%;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+    }
+
+    .gradientOutlineButton:hover:after {
+      color: #fff I !important;
     }
   }
 }

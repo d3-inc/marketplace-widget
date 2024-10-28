@@ -1,4 +1,4 @@
-import { CircleArrowLeft } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 import { Button } from '../../components/ui/button.js';
 import { cn } from '../../utils/twMerge.js';
 
@@ -8,16 +8,16 @@ type CartHeaderProps = {
 
 export const CartHeader = ({ handleBack }: CartHeaderProps) => {
   return (
-    <div className="flex justify-between p-3">
+    <div className="flex justify-between py-2 px-3">
       <div className="flex gap-2 items-center">
         <Button
           size="icon"
-          className="px-2 h-7"
+          className="px-2 h-7 border-none"
           variant={'outline'}
           aria-label={'back to search results'}
           onClick={handleBack}
         >
-          <CircleArrowLeft />
+          <ChevronLeft />
         </Button>
         <h2 className={cn('text-lg font-bold text-left')}>Cart</h2>
       </div>

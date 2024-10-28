@@ -34,7 +34,7 @@ export function SearchBar({
       <div className="flex gap-2 my-2 px-3">
         <div className="flex-grow relative">
           <span className="absolute left-3 top-3">
-            <SearchIcon size="16" />
+            <SearchIcon size="18" />
           </span>
           <Input
             value={searchValue}
@@ -54,7 +54,7 @@ export function SearchBar({
             minLength={1}
             aria-invalid={!!errorMessage}
             readOnly={isSearchDisabled}
-            className="rounded-xl pr-20 ps-8 light:bg-white dark:bg-purple-900"
+            className="rounded-xl pr-20 ps-8 light:bg-white dark:bg-[#1e1c44]"
           />
           {errorMessage ? (
             <p className="text-xs text-red-600 mt-1 text-left">{errorMessage}</p>

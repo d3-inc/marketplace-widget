@@ -14,11 +14,14 @@ export function ConnectWallet({ isButtonDisabled }: ConnectWalletProps) {
 
   return (
     <>
-      {!connectWallet.evmWallet ? (
-        <ConnectWalletModal isButtonDisabled={isButtonDisabled} />
-      ) : (
-        <HeaderDropdown evmAddress={address} />
-      )}
+      <>
+        {!connectWallet.evmWallet ? (
+          <ConnectWalletModal isButtonDisabled={isButtonDisabled} />
+        ) : (
+          <HeaderDropdown evmAddress={address} />
+        )}
+      </>
+      <div className="my-1 w-100 mx-3 border-b"></div>
     </>
   );
 }
