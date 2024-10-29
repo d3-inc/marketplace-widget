@@ -11,7 +11,11 @@ function App() {
   return (
     <>
       <div className="flex gap-3 items-center justify-center flex-col">
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
+        <a
+          href="https://docs.d3.app/channel-partner-integrations/d3-embed"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img src={'https://d3.app/favicon.png'} className="logo" alt="Vite logo" />
         </a>
         <h2 style={{ fontWeight: 500 }}>D3 Marketplace Widget</h2>

@@ -1,5 +1,7 @@
 ## Getting Started
 
+A customizable widget that can be embedded directly into your platform with minimal code, D3 Marketplace widget will make it easier than ever to integrate Name Token sales into your platform.
+
 ## installation
 
 npm
@@ -21,7 +23,7 @@ You can find complete details about usage and UX flow of the marketplace-widget 
 - `yarn dev` - to run the consumer app using the widget
 - `yarn watch:widget` - to run the widget in watch mode. This will show the real time changes in the test app
 
-If you want to test the widget locally, you can do so by cloning this repo and running the test app, which is using latest version of the widget
+To test the widget locally, you can do so by cloning this repo and running the test app, which is using latest version of the widget.
 
 - create a .env file in the `packages/widget-test-app`
 - copy the env variables from `.env.example` file to `packages/widget-test-app/.env`
