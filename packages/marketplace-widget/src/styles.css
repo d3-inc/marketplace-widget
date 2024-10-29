@@ -19,7 +19,7 @@
       --border: 214.3 31.8% 91.4%;
       --input: 214.3 31.8% 91.4%;
 
-      --card: 0 0% 100%;
+      --card: 0, 0%, 100%;
       --card-foreground: 222.2 47.4% 11.2%;
 
       --primary: 222.2 47.4% 11.2%;
@@ -37,9 +37,16 @@
       --ring: 215 20.2% 65.1%;
 
       --radius: 0.5rem;
+      --primary-foreground: 0 0% 100%;
+
+      .gradientOutlineButton:before {
+        background: #fff !important;
+      }
     }
 
     .dark {
+      --dark-purple-900: #1e1c44;
+
       --background: 224 71% 4%;
       --foreground: 213 31% 91%;
 
@@ -55,7 +62,7 @@
       --border: 216 34% 17%;
       --input: 216 34% 17%;
 
-      --card: 224 71% 4%;
+      --card: 240, 41%, 12%;
       --card-foreground: 213 31% 91%;
 
       --primary: 210 40% 98%;
@@ -70,15 +77,59 @@
       --ring: 216 34% 17%;
 
       --radius: 0.5rem;
+
+      --outline: #12122b;
+
+      button {
+        color: #fff;
+      }
+      .gradientOutlineButton:before {
+        background: #12122b !important;
+      }
     }
   }
-
   @layer base {
     body {
       @apply bg-background text-foreground;
       font-feature-settings:
         'rlig' 1,
         'calt' 1;
+    }
+    .gradientOutlineButton {
+      border: none !important;
+      position: relative;
+      z-index: 2;
+      border-radius: 10px !important;
+      background: linear-gradient(90deg, #994ad8 0.01%, #6466f1 100%);
+    }
+    .gradientOutlineButton:before {
+      content: '';
+      position: absolute;
+      left: 1px;
+      right: 1px;
+      top: 1px;
+      bottom: 1px;
+      border-radius: 9px;
+      z-index: -1;
+      transition: 200ms;
+    }
+    .gradientOutlineButton:after {
+      content: attr(data);
+      font-size: 16px;
+      background: linear-gradient(90deg, #994ad8 0.01%, #6466f1 100%);
+      background-clip: text;
+      color: transparent;
+      transition: 200ms;
+    }
+    .gradientOutlineButton:hover:before {
+      opacity: 50%;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+    }
+    .gradientOutlineButton:hover:after {
+      color: #fff I !important;
     }
   }
 }

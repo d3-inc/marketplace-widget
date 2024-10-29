@@ -479,9 +479,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@d3-inc/marketplace-widget@npm:0.1.5":
-  version: 0.1.5
-  resolution: "@d3-inc/marketplace-widget@npm:0.1.5"
+"@d3-inc/marketplace-widget@npm:0.1.6":
+  version: 0.1.6
+  resolution: "@d3-inc/marketplace-widget@npm:0.1.6"
   dependencies:
     "@radix-ui/react-dialog": "npm:^1.1.2"
     "@radix-ui/react-dropdown-menu": "npm:^2.1.2"
@@ -503,7 +503,7 @@ __metadata:
     react: ^17.0 || ^18.0
     react-dom: ^17.0 || ^18.0
     zustand: ^4.5.0
-  checksum: 10/cc6f43be9f4c0d0891da7d33d3e7e1b4a1141f1df5e7f80e31dd49b4908f5289c48a93d6653272926e05445fe2dbdc6a1db48bb47ffd58cfd701a4157d9a0805
+  checksum: 10/cff723cd3b903cd2f8caf857e2c391f5b11b9960c59aa19d4faca83aa58ef76a7acc256a1c7db0e2cfddc0585b7bc1217ecbbc36c3abc7a5ce664b048e953530
   languageName: node
   linkType: hard
 
@@ -12423,7 +12423,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "widget-test-app@workspace:packages/widget-test-app"
   dependencies:
-    "@d3-inc/marketplace-widget": "npm:0.1.5"
+    "@d3-inc/marketplace-widget": "npm:0.1.6"
     "@eslint/js": "npm:^9.9.0"
     "@rainbow-me/rainbowkit": "npm:2.1.7"
     "@tanstack/react-query": "npm:^5.56.2"

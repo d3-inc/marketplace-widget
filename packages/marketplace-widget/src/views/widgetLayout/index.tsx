@@ -15,7 +15,7 @@ const WidgetLayout = () => {
     return (
       <div
         className={
-          'flex flex-col w-[93svw] h-[560px] max-h-[75svh] max-w-[400px] border bg-primary-foreground rounded-xl absolute bottom-16 right-0 overflow-auto shadow-xl dark:border dark:border-interactive-border'
+          'flex flex-col w-[94svw] h-[90dvh] md:h-[560px] max-h:[90dvh] md:max-h-[75svh] max-w-[425px] border bg-primary-foreground rounded-xl absolute bottom-16 right-0 overflow-auto shadow-xl dark:border dark:border-interactive-border'
         }
       >
         <p className="text-xs text-red-600 mt-4 p-3 text-left">
@@ -35,7 +35,7 @@ const WidgetLayout = () => {
   return (
     <div
       className={
-        'flex flex-col w-[93svw] h-[560px] max-h-[75svh] max-w-[400px] bg-primary-foreground rounded-xl absolute bottom-16 right-0 overflow-auto shadow-xl dark:border dark:border-interactive-border'
+        'flex flex-col w-[94svw] h-[90dvh] md:h-[560px] max-h:[90dvh] md:max-h-[75svh] max-w-[425px] bg-primary-foreground rounded-xl absolute bottom-16 right-0 overflow-auto shadow-xl border dark:border-none dark:bg-[#0B0B23] dark:border-interactive-border'
       }
     >
       {isWalletIntegrationMode ? <ConnectWallet /> : null}

@@ -20,6 +20,11 @@ module.exports = {
         '4xl': '36px',
         '5xl': '48px',
       },
+      button: {
+        primary: {
+          background: 'bg-[linear-gradient(95deg,_#5744e6_4.29%,_#8936ea_99.74%)]',
+        },
+      },
     },
     extend: {
       colors: {
@@ -35,6 +40,9 @@ module.exports = {
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
+        },
+        outline: {
+          background: 'var(--outline)',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
@@ -56,6 +64,10 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        'dark-purple-900': 'var(--dark-purple-900)',
+      },
+      boxShadow: {
+        lg: '0px 4px 15px 0px #00000026',
       },
       borderRadius: {
         lg: `var(--radius)`,

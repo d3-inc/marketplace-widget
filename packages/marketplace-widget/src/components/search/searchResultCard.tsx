@@ -24,7 +24,7 @@ export const SearchResultCard = ({
   return (
     <Card
       className={clsx(
-        'drop-shadow-lg border-none rounded-xl group w-full relative',
+        'drop-shadow-md border-none rounded-xl group w-full relative',
         isDomainAvailable && 'hover:shadow-md',
       )}
     >

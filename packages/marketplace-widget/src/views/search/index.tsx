@@ -36,30 +36,34 @@ export const Search = () => {
         handleSearchSubmit={handleSearchSubmit}
         initialSearch={searchQueryParams.sld}
       />
-      <div id="search-results" className={cn('flex flex-col flex-grow gap-3 overflow-auto pb-2')}>
+      <div id="search-results" className={cn('flex flex-col flex-grow gap-3 pb-2')}>
         <ScrollArea
           className={clsx(
-            'h-9/12 px-2',
-            isWalletIntegrationMode ? 'max-h-[375px]' : 'max-h-[425px]',
+            'h-9/12',
+            isWalletIntegrationMode
+              ? 'max-h-[67dvh] md:max-h-[365px]'
+              : 'max-h-[68dvh] md:max-h-[415px]',
           )}
         >
-          <SearchResults
-            searchResults={searchResults}
-            isLoading={isLoading}
-            isError={isError}
-            error={error}
-            searchTerm={searchQueryParams.sld}
-          />
-          {widgetConfig?.showRecommendations ? (
-            <RecommendationsResults
-              recommendationsResults={recommendationsResults}
-              isLoading={isRecommendationLoading}
-              isError={isRecommendationError}
-              error={recommendationRequestError}
+          <div className="px-3">
+            <SearchResults
+              searchResults={searchResults}
+              isLoading={isLoading}
+              isError={isError}
+              error={error}
               searchTerm={searchQueryParams.sld}
-              searchResults={searchResults?.pageItems}
             />
-          ) : null}
+            {widgetConfig?.showRecommendations ? (
+              <RecommendationsResults
+                recommendationsResults={recommendationsResults}
+                isLoading={isRecommendationLoading}
+                isError={isRecommendationError}
+                error={recommendationRequestError}
+                searchTerm={searchQueryParams.sld}
+                searchResults={searchResults?.pageItems}
+              />
+            ) : null}
+          </div>
         </ScrollArea>
       </div>
       <CheckoutButton searchResults={searchResults} handleStartCart={handlePaymentMethods} />

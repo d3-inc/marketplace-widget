@@ -84,27 +84,34 @@ export function CartItems({
     >
       <ScrollArea
         className={clsx(
-          'h-9/12 w-full px-2',
-          isWalletIntegrationMode ? 'max-h-[335px]' : 'max-h-[385px]',
+          'h-9/12 w-full',
+          isWalletIntegrationMode
+            ? 'max-h-[62dvh] md:max-h-[315px]'
+            : 'max-h-[71dvh] md:max-h-[365px]',
         )}
       >
-        <div id="cart-items-container" className={cn('flex flex-col flex-grow gap-y-4 py-3 pe-2')}>
-          {cart.items?.map((cartItem) => {
-            return (
-              <CartItem
-                key={cartItem.tld + cartItem.sld}
-                cartItem={cartItem}
-                handleCartAction={() => handleRemoveFromCart(cartItem)}
-                disabled={
-                  isPaymentOptionsError ||
-                  isPaymentOptionsLoading ||
-                  startCheckoutOrder.isPending ||
-                  checkoutState.isTransactionInProgress ||
-                  isSwitchNetworkInProgress
-                }
-              />
-            );
-          })}
+        <div className="px-3">
+          <div
+            id="cart-items-container"
+            className={cn('flex flex-col flex-grow gap-y-4 py-3 pe-2')}
+          >
+            {cart.items?.map((cartItem) => {
+              return (
+                <CartItem
+                  key={cartItem.tld + cartItem.sld}
+                  cartItem={cartItem}
+                  handleCartAction={() => handleRemoveFromCart(cartItem)}
+                  disabled={
+                    isPaymentOptionsError ||
+                    isPaymentOptionsLoading ||
+                    startCheckoutOrder.isPending ||
+                    checkoutState.isTransactionInProgress ||
+                    isSwitchNetworkInProgress
+                  }
+                />
+              );
+            })}
+          </div>
         </div>
       </ScrollArea>
       <div className="flex flex-col gap-2 mt-auto px-1">

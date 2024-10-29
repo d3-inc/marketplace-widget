@@ -12,5 +12,5 @@ export default defineConfig({
     },
   },
   plugins: [react()],
-  base: '/widget-test-app/',
+  base: '/marketplace-widget/',
 });
