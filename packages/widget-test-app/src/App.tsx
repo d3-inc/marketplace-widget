@@ -3,8 +3,8 @@ import './App.css';
 
 const d3ApiKey = import.meta.env.VITE_D3_API_KEY;
 const d3ApiEndpoint = import.meta.env.VITE_API_ENDPOINT;
-const d3WidgetAppearance = import.meta.env.VITE_WIDGET_APPEARANCE;
-const widgetTlds = import.meta.env.VITE_TLDS;
+const d3WidgetAppearance = import.meta.env.VITE_WIDGET_APPEARANCE ?? 'light';
+const widgetTlds = import.meta.env.VITE_TLDS ?? 'shib,core';
 const walletConnectKey = import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID;
 
 function App() {
