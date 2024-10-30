@@ -27,13 +27,14 @@ export type SearchResultRequestResponse = {
 };
 
 export type PaymentOption = {
-  tokenAddress: string;
+  tokenAddress?: string; // empty for native token
   contractAddress: string;
   symbol: string;
   icon: string;
   price: number;
   addressType: WalletAddress;
   chainId: string;
+  chainName: string;
 };
 
 export type PaymentOptionRequestResponse = {
