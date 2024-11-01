@@ -26,22 +26,25 @@ export const CartPaymentMethods = ({
 }: CartPaymentMethodsProps) => {
   const cart = useStore(useShallow((state) => state.cart));
   const paymentMethods = paymentOptions?.options;
+
   return (
     <div className="flex justify-between items-center gap-2 px-3 mb-1">
       <h3 className={cn('text-md font-semibold text-left')}>Payment Method</h3>
       <div>
         <Select
-          value={selectedPaymentMethod?.symbol}
+          value={selectedPaymentMethod?.chainName + ',' + selectedPaymentMethod?.symbol}
           onValueChange={(updatedValue) => {
             const newMethod = paymentMethods?.find(
-              (item) => item.symbol.toLowerCase() === updatedValue.toLowerCase(),
+              (item) =>
+                item.chainName?.toLowerCase() + ',' + item?.symbol?.toLowerCase() ===
+                updatedValue?.toLowerCase(),
             );
             if (newMethod) {
               setSelectedPaymentMethod(newMethod);
             }
           }}
         >
-          <SelectTrigger className="w-[200px] rounded-xl border-black dark:border-white">
+          <SelectTrigger className="w-[250px] rounded-xl border-black dark:border-white">
             <SelectValue placeholder="Select Payment" aria-label="select payment method" />
           </SelectTrigger>
           <SelectContent>
@@ -49,15 +52,24 @@ export const CartPaymentMethods = ({
               <SelectItem
                 disabled={isPaymentOptionsLoading || !cart?.items?.length}
                 key={payment.symbol + payment.tokenAddress}
-                value={payment.symbol}
+                value={payment.chainName + ',' + payment.symbol}
               >
-                <span className="flex gap-2">
+                <span className="flex gap-2 items-center justify-center">
                   <img
-                    className="object-cover object-center w-full h-5"
+                    className="object-cover object-center h-5"
                     src={payment.icon}
                     alt={payment.symbol}
                   />
-                  {payment.symbol}
+                  <span className="flex items-center gap-1">
+                    <strong>{payment.symbol}</strong>
+                    <span className="text-xs">
+                      (
+                      {payment.chainName?.length > 15
+                        ? `${payment.chainName.slice(0, 13)}...`
+                        : payment.chainName}
+                      )
+                    </span>
+                  </span>
                 </span>
               </SelectItem>
             ))}
