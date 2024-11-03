@@ -4,8 +4,7 @@ A customizable widget that can be embedded directly into your platform with mini
 
 Visit our [demo](https://d3-inc.github.io/marketplace-widget/) page to see the live version of the widget
 
-![D3 widget light theme](https://cdn.d3.app/assets/widgets/widget-light.png)
-![D3 widget dark theme](https://cdn.d3.app/assets/widgets/widget-dark.png)
+![widget-demo](https://github.com/user-attachments/assets/8b90d184-a401-48c6-a864-4e41887430a2)
 
 ## Getting Started
 
