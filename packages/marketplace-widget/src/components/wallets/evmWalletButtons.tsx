@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { Button } from '../ui/button.js';
 
-import { CoinbaseWalletIcon, WalletConnectIcon } from '../icons/wallet.js';
+import { CoinbaseWalletIcon, MetaMaskWalletIcon, WalletConnectIcon } from '../icons/wallet.js';
 import { useWalletButtons } from './hooks/useWalletButtons.js';
 
 const ButtonContent = ({ icon, label }: { icon?: React.ReactElement | string; label: string }) => {
@@ -68,7 +68,10 @@ export default function EVMWalletButtons() {
               ) : connector?.id === 'injected' && isCoin98Wallet() ? (
                 <ButtonContent label={'Coin98'} icon={connector.icon} />
               ) : (
-                <ButtonContent label={'MetaMask'} icon={connector.icon} />
+                <ButtonContent
+                  label={'MetaMask'}
+                  icon={<MetaMaskWalletIcon width={24} height={24} />}
+                />
               )}
             </Button>
           );

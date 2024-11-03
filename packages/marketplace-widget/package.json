@@ -1,8 +1,8 @@
 {
   "name": "@d3-inc/marketplace-widget",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "type": "module",
-  "description": "D3 marketplace widget for name tokens purchase",
+  "description": "D3 Marketplace Widget will make it easier than ever to integrate Name Token sales into your platform.",
   "author": "d3-inc",
   "repository": {
     "type": "git",
@@ -59,8 +59,8 @@
   },
   "peerDependencies": {
     "@tanstack/react-query": "^5.56.2",
-    "react": "^17.0 || ^18.0",
-    "react-dom": "^17.0 || ^18.0",
+    "react": "^18.0",
+    "react-dom": "^18.0",
     "zustand": "^4.5.0"
   },
   "devDependencies": {

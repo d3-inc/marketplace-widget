@@ -479,9 +479,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@d3-inc/marketplace-widget@npm:0.1.6":
-  version: 0.1.6
-  resolution: "@d3-inc/marketplace-widget@npm:0.1.6"
+"@d3-inc/marketplace-widget@npm:0.1.7":
+  version: 0.1.7
+  resolution: "@d3-inc/marketplace-widget@npm:0.1.7"
   dependencies:
     "@radix-ui/react-dialog": "npm:^1.1.2"
     "@radix-ui/react-dropdown-menu": "npm:^2.1.2"
@@ -500,10 +500,10 @@ __metadata:
     wagmi: "npm:^2.12.14"
   peerDependencies:
     "@tanstack/react-query": ^5.56.2
-    react: ^17.0 || ^18.0
-    react-dom: ^17.0 || ^18.0
+    react: ^18.0
+    react-dom: ^18.0
     zustand: ^4.5.0
-  checksum: 10/cff723cd3b903cd2f8caf857e2c391f5b11b9960c59aa19d4faca83aa58ef76a7acc256a1c7db0e2cfddc0585b7bc1217ecbbc36c3abc7a5ce664b048e953530
+  checksum: 10/e0e6832acf69d27b524b81cf7d6cf1da71c8b9bb27daf374dabe8270cd4cea6582e878ee087771702978c964c8dcb717006ff8954a8fdda15790ef85be384b1f
   languageName: node
   linkType: hard
 
@@ -544,8 +544,8 @@ __metadata:
     zustand: "npm:^4.5.5"
   peerDependencies:
     "@tanstack/react-query": ^5.56.2
-    react: ^17.0 || ^18.0
-    react-dom: ^17.0 || ^18.0
+    react: ^18.0
+    react-dom: ^18.0
     zustand: ^4.5.0
   languageName: unknown
   linkType: soft
@@ -12423,7 +12423,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "widget-test-app@workspace:packages/widget-test-app"
   dependencies:
-    "@d3-inc/marketplace-widget": "npm:0.1.6"
+    "@d3-inc/marketplace-widget": "npm:0.1.7"
     "@eslint/js": "npm:^9.9.0"
     "@rainbow-me/rainbowkit": "npm:2.1.7"
     "@tanstack/react-query": "npm:^5.56.2"

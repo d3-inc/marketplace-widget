@@ -1,7 +1,7 @@
 export type StartCheckoutOrderPayload = {
   paymentOptions: {
     contractAddress: `0x${string}` | string;
-    tokenAddress: `0x${string}` | string;
+    tokenAddress?: `0x${string}` | string;
     buyerAddress: `0x${string}` | string;
   };
   names: {

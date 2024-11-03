@@ -1,6 +1,12 @@
-## Getting Started
+# Project
 
-A customizable widget that can be embedded directly into your platform with minimal code, D3 Marketplace widget will make it easier than ever to integrate Name Token sales into your platform.
+A customizable widget that can be embedded directly into your platform with minimal code, D3 Marketplace Widget will make it easier than ever to integrate Name Token sales into your platform. D3 Embed is a simple yet powerful tool designed to seamlessly fit into your website or application, allowing your users to interact with D3 services directly from your site.
+
+Visit our [demo](https://d3-inc.github.io/marketplace-widget/) page to see the live version of the widget
+
+![widget-demo](https://github.com/user-attachments/assets/8b90d184-a401-48c6-a864-4e41887430a2)
+
+## Getting Started
 
 ## installation
 
@@ -14,7 +20,7 @@ yarn
 
 ## Documentation
 
-You can find complete details about usage and UX flow of the marketplace-widget at [D3 Docs](https://docs.d3.app/channel-partner-integrations/d3-embed)
+You can find complete details about widget API and UX flow of the marketplace-widget at [D3 Docs](https://docs.d3.app/channel-partner-integrations/d3-embed)
 
 ### Local setup
 
