@@ -25,7 +25,7 @@ function App() {
         config={{
           appearance: d3WidgetAppearance,
           apiKey: d3ApiKey,
-          showRecommendations: false,
+          showRecommendations: true,
           tlds: widgetTlds,
           apiEndpoint: d3ApiEndpoint,
           walletConfig: {
