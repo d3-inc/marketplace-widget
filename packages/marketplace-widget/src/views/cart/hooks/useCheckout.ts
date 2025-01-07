@@ -17,6 +17,7 @@ import type { CheckoutState, StartCheckoutOrderPayload } from './types.js';
 export const useCheckout = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<PaymentOption | null>(null);
   const [isNetworkUpdated, setIsNetworkUpdated] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
   const [checkoutState, setCheckoutState] = useState<CheckoutState>({
     feedback: '',
     isError: false,
@@ -220,13 +221,17 @@ export const useCheckout = () => {
         onError: (error) => {
           // eslint-disable-next-line
           console.log({ error });
+          const errorMessage = error?.message ?? '';
           setCheckoutState((old) => ({
             ...old,
             isTransactionInProgress: false,
             isOrderSuccess: false,
-            feedback: error.message,
+            feedback: errorMessage,
             isError: true,
           }));
+          if (String(errorMessage)?.toLowerCase()?.includes('registrant contact is required')) {
+            setShowContactForm(true);
+          }
         },
       });
     }
@@ -268,5 +273,7 @@ export const useCheckout = () => {
     paymentOptionsError,
     isSwitchNetworkInProgress,
     switchNetworkError,
+    showContactForm,
+    setShowContactForm,
   };
 };

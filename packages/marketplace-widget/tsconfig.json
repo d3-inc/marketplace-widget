@@ -11,8 +11,9 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "baseUrl": "./",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   },
-  "include": ["./src/**/*", "postcss.config.js"],
+  "include": ["./src/**/*", "postcss.config.js", "*/src/data/*.json"],
   "exclude": ["node_modules", "dist"]
 }

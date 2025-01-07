@@ -10,6 +10,19 @@ export type StartCheckoutOrderPayload = {
     autoRenew: boolean;
     domainLength: number;
   }[];
+  registrantContract?: {
+    firstName: string;
+    lastName: string;
+    organization?: string;
+    email: string;
+    phone: string;
+    phoneCountryCode: string;
+    street: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    countryCode: string;
+  };
 };
 
 export type CheckoutState = {

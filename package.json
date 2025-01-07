@@ -56,5 +56,8 @@
     "*.{json,md}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "react-phone-number-input": "^3.4.10"
   }
 }
