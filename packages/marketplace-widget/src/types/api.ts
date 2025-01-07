@@ -19,6 +19,7 @@ export type SearchResult = {
   nativeAmount: string;
   nativeCurrency: string;
   clickUrl: string;
+  eoi: boolean;
 };
 
 export type SearchResultRequestResponse = {

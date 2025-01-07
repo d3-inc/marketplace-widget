@@ -39,3 +39,7 @@ export function getFilteredRecommendations(
     .filter((item) => item?.status === 'available');
   return filteredRecommendations;
 }
+
+export const getIsICannDomain = (domain: { eoi: boolean }) => {
+  return domain?.eoi === false;
+};

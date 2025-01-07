@@ -2,6 +2,7 @@ import { CircleXIcon } from 'lucide-react';
 import type { SearchResult } from '../../types/api.js';
 import { nameTokenFormatter } from '../../utils/nameTokens.js';
 import { DomainPrice } from '../domain/domainPrice.js';
+import { DomainType } from '../domain/domainType.js';
 import { Button } from '../ui/button.js';
 import { Card, CardContent } from '../ui/card.js';
 
@@ -18,9 +19,12 @@ export const CartItem = ({ cartItem, handleCartAction, disabled }: CartItemProps
       <CardContent className="grid px-3 py-2">
         <div className="flex items-center gap-2 justify-between">
           <div className="flex-1 space-y-1">
-            <p className="text-lg font-semibold text-left break-all">
-              {nameTokenFormatter({ sld: cartItem.sld, tld: cartItem.tld, eoi: true })}
-            </p>
+            <div className="flex items-center gap-1">
+              <DomainType searchResult={cartItem} />
+              <p className="text-lg font-semibold text-left break-all">
+                {nameTokenFormatter({ sld: cartItem.sld, tld: cartItem.tld, eoi: cartItem?.eoi })}
+              </p>
+            </div>
           </div>
           <DomainPrice domain={cartItem} isDomainLocked={!isDomainAvailable} />
           <Button
