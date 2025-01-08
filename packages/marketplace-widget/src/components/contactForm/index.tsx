@@ -1,11 +1,11 @@
-'use client';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
 import clsx from 'clsx';
 import { cn } from '../../utils/twMerge.js';
+import type { ContactInfo, RegistrantContact } from '../../views/cart/hooks/types.js';
 import { Button } from '../ui/button.js';
 import {
   Form,
@@ -22,11 +22,11 @@ import { PhoneInput } from '../ui/phoneInput.js';
 import { ScrollArea } from '../ui/scrollArea.js';
 
 const formSchema = z.object({
-  first_name: z
+  firstName: z
     .string({ required_error: 'First Name is required' })
     .min(2, { message: 'First Name must have at least 2 characters' })
     .max(50, { message: 'First Name cannot exceed 50 characters' }),
-  last_name: z
+  lastName: z
     .string({ required_error: 'Last Name is required' })
     .max(50, { message: 'Last Name cannot exceed 50 characters' }),
   email: z
@@ -42,7 +42,7 @@ const formSchema = z.object({
   street: z
     .string({ required_error: 'Street address is required' })
     .max(256, { message: 'Street address cannot exceed 256 characters' }),
-  zipcode: z
+  postalCode: z
     .string({ required_error: 'ZIP Code is required' })
     .max(10, { message: 'ZIP Code cannot exceed 10 characters' }),
   organization: z
@@ -51,24 +51,63 @@ const formSchema = z.object({
     .optional(),
 });
 
+const formDefaultValues = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  postalCode: '',
+  countryCode: '',
+  street: '',
+  state: '',
+  city: '',
+  organization: '',
+  phoneCountryCode: '',
+  phone: '',
+};
 type ContactFormProps = {
   isWalletIntegrationMode: boolean;
   isButtonDisabled: boolean;
+  setContactInfo: React.Dispatch<React.SetStateAction<ContactInfo>>;
+  handleStartCheckout: (contact?: RegistrantContact) => Promise<void>;
 };
 
-export function ContactForm({ isWalletIntegrationMode, isButtonDisabled }: ContactFormProps) {
+export function ContactForm({
+  isWalletIntegrationMode,
+  isButtonDisabled,
+  setContactInfo,
+  handleStartCheckout,
+}: ContactFormProps) {
   const [countryName, setCountryName] = useState<string>('');
   const [stateName, setStateName] = useState<string>('');
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: formDefaultValues,
   });
-  // eslint-disable-next-line prettier/prettier, no-console
-  console.log(countryName);
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       // eslint-disable-next-line prettier/prettier, no-console
       console.log(values, countryName);
+      const contact = {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        postalCode: values.postalCode,
+        countryCode: countryName,
+        street: values.street,
+        state: values.country[1] ?? '',
+        city: values.city,
+        organization: values.organization,
+        // phone: values.phone,
+        phoneCountryCode: '+1',
+        phone: '2014563452',
+      };
+      setContactInfo({
+        isFormOpen: false,
+        contact,
+      });
+      handleStartCheckout(contact);
     } catch (error) {
       console.error('Form submission error', error);
     }
@@ -96,7 +135,7 @@ export function ContactForm({ isWalletIntegrationMode, isButtonDisabled }: Conta
           </div>
           <FormField
             control={form.control}
-            name="first_name"
+            name="firstName"
             render={({ field }) => (
               <FormItem className="space-y-1 flex flex-col items-start">
                 <FormLabel>First Name</FormLabel>
@@ -111,7 +150,7 @@ export function ContactForm({ isWalletIntegrationMode, isButtonDisabled }: Conta
 
           <FormField
             control={form.control}
-            name="last_name"
+            name="lastName"
             render={({ field }) => (
               <FormItem className="space-y-1 flex flex-col items-start">
                 <FormLabel>Last Name</FormLabel>
@@ -146,11 +185,7 @@ export function ContactForm({ isWalletIntegrationMode, isButtonDisabled }: Conta
               <FormItem className="space-y-1 flex flex-col items-start">
                 <FormLabel>Phone number</FormLabel>
                 <FormControl className="w-full">
-                  <PhoneInput
-                    placeholder="Enter your phone number."
-                    {...field}
-                    defaultCountry="US"
-                  />
+                  <PhoneInput placeholder="Enter phone number." {...field} defaultCountry="US" />
                 </FormControl>
 
                 <FormMessage />
@@ -169,7 +204,7 @@ export function ContactForm({ isWalletIntegrationMode, isButtonDisabled }: Conta
                 <FormControl>
                   <LocationSelector
                     onCountryChange={(country) => {
-                      setCountryName(country || '');
+                      setCountryName(country?.iso2 || '');
                       form.setValue(field.name, [country?.name || '', stateName || '']);
                     }}
                     onStateChange={(state) => {
@@ -222,7 +257,7 @@ export function ContactForm({ isWalletIntegrationMode, isButtonDisabled }: Conta
             <div className="col-span-6">
               <FormField
                 control={form.control}
-                name="zipcode"
+                name="postalCode"
                 render={({ field }) => (
                   <FormItem className="space-y-1 flex flex-col items-start">
                     <FormLabel>Zipcode</FormLabel>

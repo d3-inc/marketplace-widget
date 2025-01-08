@@ -30,7 +30,7 @@
     "@typescript-eslint/parser": "^7.18.0",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.57.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.30.0",
@@ -41,12 +41,12 @@
     "eslint-plugin-react": "^7.36.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-standard": "^5.0.0",
-    "husky": "^9.1.6",
-    "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3",
-    "prettier-plugin-organize-imports": "^4.0.0",
-    "release-please": "^16.14.2",
-    "typescript": "^5.6.2"
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "release-please": "^16.15.0",
+    "typescript": "^5.7.2"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
@@ -56,8 +56,5 @@
     "*.{json,md}": [
       "prettier --write"
     ]
-  },
-  "dependencies": {
-    "react-phone-number-input": "^3.4.10"
   }
 }

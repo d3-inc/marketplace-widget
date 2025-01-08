@@ -36,5 +36,5 @@ export type CheckoutState = {
 
 export type ContactInfo = {
   isFormOpen: boolean;
-  contact?: RegistrantContact;
+  contact?: RegistrantContact | null;
 };

@@ -62,6 +62,7 @@ export const CartView = () => {
           <ContactForm
             setContactInfo={setContactInfo}
             isWalletIntegrationMode={isWalletIntegrationMode}
+            handleStartCheckout={handleStartCheckout}
             isButtonDisabled={
               startCheckoutOrder.isPending ||
               checkoutState.isTransactionInProgress ||

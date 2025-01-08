@@ -133,7 +133,7 @@ export function CartItems({
             isSwitchNetworkInProgress
           }
           className="rounded-xl bg-[linear-gradient(95deg,_#5744e6_4.29%,_#8936ea_99.74%)] mt-auto"
-          onClick={handleStartCheckout}
+          onClick={() => handleStartCheckout()}
         >
           {isSwitchNetworkInProgress ||
           startCheckoutOrder.isPending ||
