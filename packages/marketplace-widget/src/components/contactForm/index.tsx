@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
 import clsx from 'clsx';
+import { cn } from '../../utils/twMerge.js';
 import { Button } from '../ui/button.js';
 import {
   Form,
@@ -62,11 +63,12 @@ export function ContactForm({ isWalletIntegrationMode, isButtonDisabled }: Conta
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
-
+  // eslint-disable-next-line prettier/prettier, no-console
+  console.log(countryName);
   function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       // eslint-disable-next-line prettier/prettier, no-console
-      console.log(values);
+      console.log(values, countryName);
     } catch (error) {
       console.error('Form submission error', error);
     }
@@ -77,8 +79,8 @@ export function ContactForm({ isWalletIntegrationMode, isButtonDisabled }: Conta
       className={clsx(
         'h-10/12 w-full',
         isWalletIntegrationMode
-          ? 'max-h-[77dvh] md:max-h-[430px]'
-          : 'max-h-[85dvh] md:max-h-[490px]',
+          ? 'max-h-[76dvh] md:max-h-[430px]'
+          : 'max-h-[83dvh] md:max-h-[490px]',
       )}
     >
       <Form {...form}>
@@ -86,6 +88,12 @@ export function ContactForm({ isWalletIntegrationMode, isButtonDisabled }: Conta
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-3 max-w-3xl mx-auto px-4 pb-4"
         >
+          <div>
+            <h5 className={cn('text-sm font-semibold text-left')}>Contact Information</h5>
+            <p className={cn('text-sm text-left')}>
+              This information will be saved for future purchases
+            </p>
+          </div>
           <FormField
             control={form.control}
             name="first_name"
@@ -161,7 +169,7 @@ export function ContactForm({ isWalletIntegrationMode, isButtonDisabled }: Conta
                 <FormControl>
                   <LocationSelector
                     onCountryChange={(country) => {
-                      setCountryName(country?.name || '');
+                      setCountryName(country || '');
                       form.setValue(field.name, [country?.name || '', stateName || '']);
                     }}
                     onStateChange={(state) => {
@@ -250,7 +258,7 @@ export function ContactForm({ isWalletIntegrationMode, isButtonDisabled }: Conta
             type="submit"
             className="rounded-xl w-full bg-[linear-gradient(95deg,_#5744e6_4.29%,_#8936ea_99.74%)] mt-auto"
           >
-            Submit
+            Buy Now
           </Button>
         </form>
       </Form>

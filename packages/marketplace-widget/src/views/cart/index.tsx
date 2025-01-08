@@ -33,8 +33,8 @@ export const CartView = () => {
     isPaymentOptionsLoading,
     paymentOptionsError,
     isSwitchNetworkInProgress,
-    showContactForm,
-    setShowContactForm,
+    contactInfo,
+    setContactInfo,
   } = useCheckout();
 
   if (checkoutState.isOrderSuccess) {
@@ -54,12 +54,13 @@ export const CartView = () => {
   return (
     <div className="flex flex-col gap-y-2 flex-grow">
       <CartHeader handleBack={handleSearchView} />
-      {showContactForm ? (
+      {contactInfo?.isFormOpen ? (
         <div
           id="contact-form-container"
           className={cn('flex flex-col flex-grow gap-3 overflow-auto pb-2')}
         >
           <ContactForm
+            setContactInfo={setContactInfo}
             isWalletIntegrationMode={isWalletIntegrationMode}
             isButtonDisabled={
               startCheckoutOrder.isPending ||

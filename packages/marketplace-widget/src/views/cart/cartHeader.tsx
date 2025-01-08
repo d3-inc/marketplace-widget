@@ -12,7 +12,7 @@ export const CartHeader = ({ handleBack }: CartHeaderProps) => {
       <div className="flex gap-2 items-center">
         <Button
           size="icon"
-          className="px-2 h-7 border-none"
+          className="px-1 h-7 w-7 border-none"
           variant={'outline'}
           aria-label={'back to search results'}
           onClick={handleBack}

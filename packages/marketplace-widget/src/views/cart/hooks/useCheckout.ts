@@ -12,12 +12,18 @@ import type {
   PaymentOption,
   PaymentOptionRequestResponse,
 } from '../../../types/api.js';
-import type { CheckoutState, StartCheckoutOrderPayload } from './types.js';
+import type { CheckoutState, RegistrantContact, StartCheckoutOrderPayload } from './types.js';
 
 export const useCheckout = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<PaymentOption | null>(null);
   const [isNetworkUpdated, setIsNetworkUpdated] = useState(false);
-  const [showContactForm, setShowContactForm] = useState(false);
+  const [contactInfo, setContactInfo] = useState<{
+    isFormOpen: boolean;
+    contact?: RegistrantContact | null;
+  }>({
+    isFormOpen: false,
+    contact: null,
+  });
   const [checkoutState, setCheckoutState] = useState<CheckoutState>({
     feedback: '',
     isError: false,
@@ -230,7 +236,10 @@ export const useCheckout = () => {
             isError: true,
           }));
           if (String(errorMessage)?.toLowerCase()?.includes('registrant contact is required')) {
-            setShowContactForm(true);
+            setContactInfo((old) => ({
+              ...old,
+              isFormOpen: true,
+            }));
           }
         },
       });
@@ -273,7 +282,7 @@ export const useCheckout = () => {
     paymentOptionsError,
     isSwitchNetworkInProgress,
     switchNetworkError,
-    showContactForm,
-    setShowContactForm,
+    contactInfo,
+    setContactInfo,
   };
 };

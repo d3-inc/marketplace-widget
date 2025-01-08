@@ -1,3 +1,17 @@
+export type RegistrantContact = {
+  firstName: string;
+  lastName: string;
+  organization?: string;
+  email: string;
+  phone: string;
+  phoneCountryCode: string;
+  street: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  countryCode: string;
+};
+
 export type StartCheckoutOrderPayload = {
   paymentOptions: {
     contractAddress: `0x${string}` | string;
@@ -10,19 +24,7 @@ export type StartCheckoutOrderPayload = {
     autoRenew: boolean;
     domainLength: number;
   }[];
-  registrantContract?: {
-    firstName: string;
-    lastName: string;
-    organization?: string;
-    email: string;
-    phone: string;
-    phoneCountryCode: string;
-    street: string;
-    city: string;
-    state: string;
-    postalCode: string;
-    countryCode: string;
-  };
+  registrantContract?: RegistrantContact;
 };
 
 export type CheckoutState = {
@@ -30,4 +32,9 @@ export type CheckoutState = {
   isError: boolean;
   isTransactionInProgress: boolean;
   isOrderSuccess: boolean;
+};
+
+export type ContactInfo = {
+  isFormOpen: boolean;
+  contact?: RegistrantContact;
 };
