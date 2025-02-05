@@ -2,6 +2,7 @@ import { D3Widget } from '@d3-inc/marketplace-widget';
 import './App.css';
 
 const d3ApiKey = import.meta.env.VITE_D3_API_KEY;
+const infuraApiKey = import.meta.env.VITE_INFURA_KEY;
 const d3ApiEndpoint = import.meta.env.VITE_API_ENDPOINT;
 const d3WidgetAppearance = import.meta.env.VITE_WIDGET_APPEARANCE ?? 'light';
 const widgetTlds = import.meta.env.VITE_TLDS ?? 'shib,core';
@@ -30,6 +31,7 @@ function App() {
           apiEndpoint: d3ApiEndpoint,
           walletConfig: {
             walletConnectKey,
+            infuraApiKey,
           },
         }}
       />
