@@ -14,9 +14,6 @@ import { PurchaseSuccess } from './purchaseSuccess.js';
 export const CartView = () => {
   const setWidgetSettings = useStore(useCallback((state) => state.setWidgetSettings, []));
   const cart = useStore(useShallow((state) => state.cart));
-  const handleSearchView = () => {
-    setWidgetSettings({ isCartViewOpen: false });
-  };
   const widgetConfig = useStore(useShallow((state) => state.widgetConfig));
   const isWalletIntegrationMode = widgetConfig?.integrationMode
     ? widgetConfig?.integrationMode === WidgetIntegrationMode.WALLET
@@ -36,6 +33,14 @@ export const CartView = () => {
     contactInfo,
     setContactInfo,
   } = useCheckout();
+
+  const handleSearchView = () => {
+    if (contactInfo?.isFormOpen) {
+      setContactInfo((old) => ({ ...old, isFormOpen: false }));
+      return;
+    }
+    setWidgetSettings({ isCartViewOpen: false });
+  };
 
   if (checkoutState.isOrderSuccess) {
     return (

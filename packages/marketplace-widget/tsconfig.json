@@ -14,6 +14,6 @@
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
-  "include": ["./src/**/*", "postcss.config.js", "*/src/data/*.json"],
+  "include": ["./src/**/*", "postcss.config.js", "./src/**/*.json"],
   "exclude": ["node_modules", "dist"]
 }

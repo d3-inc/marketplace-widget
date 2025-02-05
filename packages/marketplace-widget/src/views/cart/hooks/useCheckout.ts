@@ -12,6 +12,7 @@ import type {
   PaymentOption,
   PaymentOptionRequestResponse,
 } from '../../../types/api.js';
+import { getIsICannDomain } from '../../../utils/nameTokens.js';
 import type {
   CheckoutState,
   ContactInfo,
@@ -136,7 +137,8 @@ export const useCheckout = () => {
     },
     [widgetConfig, selectedPaymentMethod, handleOnCheckoutError, handleOnCheckoutSuccess],
   );
-
+  // eslint-disable-next-line no-console
+  console.log({ contactInfo });
   const handleCryptoCheckoutCallback = useCallback(
     async (response: CheckoutOrderRequestResponse) => {
       if (connectWallet.evmWallet && selectedPaymentMethod) {
@@ -190,7 +192,7 @@ export const useCheckout = () => {
       if (!isWalletConnected) {
         setCheckoutState({
           isError: true,
-          feedback: 'Please connect wallet to continue with purchase',
+          feedback: 'Please connect a wallet to continue with purchase',
           isTransactionInProgress: false,
           isOrderSuccess: false,
         });
@@ -200,6 +202,12 @@ export const useCheckout = () => {
       if (isConnectWalletIntegrationMode) {
         const isCorrectChain = await ensureCorrectEVMChain(Number(selectedPaymentMethod.chainId));
         if (!isCorrectChain) return;
+      }
+      const registrantContact = contactInfo?.contact ? contactInfo?.contact : contact;
+      const isOrderContainsICannDomain = cart?.items?.some((domain) => getIsICannDomain(domain));
+      if (isOrderContainsICannDomain && !registrantContact) {
+        setContactInfo((old) => ({ ...old, isFormOpen: true }));
+        return;
       }
       if (!startCheckoutOrder.isPending && walletAddress) {
         // Reset the checkout state to initial state
@@ -217,7 +225,6 @@ export const useCheckout = () => {
         }));
         // eslint-disable-next-line no-console
         console.log('Use Checkout ', { contactInfo, contact });
-        const registrantContact = contactInfo?.contact ? contactInfo?.contact : contact;
         const payload = {
           paymentOptions: {
             contractAddress: selectedPaymentMethod.contractAddress,

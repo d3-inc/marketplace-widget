@@ -1,55 +1,20 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import clsx from 'clsx';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import * as z from 'zod';
+import type * as z from 'zod';
 
-import clsx from 'clsx';
 import { cn } from '../../utils/twMerge.js';
 import type { ContactInfo, RegistrantContact } from '../../views/cart/hooks/types.js';
 import { Button } from '../ui/button.js';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '../ui/form.js';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form.js';
 import { Input } from '../ui/input.js';
-import LocationSelector from '../ui/locationInput.js';
 import { PhoneInput } from '../ui/phoneInput.js';
 import { ScrollArea } from '../ui/scrollArea.js';
-
-const formSchema = z.object({
-  firstName: z
-    .string({ required_error: 'First Name is required' })
-    .min(2, { message: 'First Name must have at least 2 characters' })
-    .max(50, { message: 'First Name cannot exceed 50 characters' }),
-  lastName: z
-    .string({ required_error: 'Last Name is required' })
-    .max(50, { message: 'Last Name cannot exceed 50 characters' }),
-  email: z
-    .string({ required_error: 'Email is required' })
-    .email({ message: 'Invalid email format' }),
-  phone: z.string({ required_error: 'Phone number is required' }),
-  country: z
-    .tuple([z.string({ required_error: 'Country is required' }), z.string().optional()])
-    .refine(([country]) => country.trim() !== '', { message: 'Country cannot be empty' }),
-  city: z
-    .string({ required_error: 'City is required' })
-    .max(100, { message: 'City name cannot exceed 100 characters' }),
-  street: z
-    .string({ required_error: 'Street address is required' })
-    .max(256, { message: 'Street address cannot exceed 256 characters' }),
-  postalCode: z
-    .string({ required_error: 'ZIP Code is required' })
-    .max(10, { message: 'ZIP Code cannot exceed 10 characters' }),
-  organization: z
-    .string()
-    .max(256, { message: 'Organization name cannot exceed 256 characters' })
-    .optional(),
-});
+import { CountrySelector } from './countrySelector.js';
+import { contactFormSchema } from './schema.js';
+import { StateInput } from './stateInput.js';
+import type { CountryProps } from './types.js';
 
 const formDefaultValues = {
   firstName: '',
@@ -77,26 +42,26 @@ export function ContactForm({
   setContactInfo,
   handleStartCheckout,
 }: ContactFormProps) {
-  const [countryName, setCountryName] = useState<string>('');
-  const [stateName, setStateName] = useState<string>('');
+  const [selectedCountry, setSelectedCountry] = useState<CountryProps | null>(null);
+  const [selectedState, setSelectedState] = useState<{ id: number; name: string } | null>(null);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof contactFormSchema>>({
+    resolver: zodResolver(contactFormSchema),
     defaultValues: formDefaultValues,
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof contactFormSchema>) {
     try {
       // eslint-disable-next-line prettier/prettier, no-console
-      console.log(values, countryName);
+      console.log(values, selectedCountry);
       const contact = {
         firstName: values.firstName,
         lastName: values.lastName,
         email: values.email,
         postalCode: values.postalCode,
-        countryCode: countryName,
+        countryCode: selectedCountry?.iso2 ?? '',
+        state: values.state ?? '',
         street: values.street,
-        state: values.country[1] ?? '',
         city: values.city,
         organization: values.organization,
         // phone: values.phone,
@@ -133,36 +98,40 @@ export function ContactForm({
               This information will be saved for future purchases
             </p>
           </div>
-          <FormField
-            control={form.control}
-            name="firstName"
-            render={({ field }) => (
-              <FormItem className="space-y-1 flex flex-col items-start">
-                <FormLabel>First Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="First Name" type="text" {...field} />
-                </FormControl>
+          <div className="flex gap-4 w-full">
+            <div className="flex-1 flex-grow items-start">
+              <FormField
+                control={form.control}
+                name="firstName"
+                render={({ field }) => (
+                  <FormItem className="space-y-1 flex flex-col items-start">
+                    <FormLabel>First Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="First Name" type="text" {...field} />
+                    </FormControl>
 
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="flex-1 flex-grow items-start">
+              <FormField
+                control={form.control}
+                name="lastName"
+                render={({ field }) => (
+                  <FormItem className="space-y-1 flex flex-col items-start">
+                    <FormLabel>Last Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter Last Name" type="text" {...field} />
+                    </FormControl>
 
-          <FormField
-            control={form.control}
-            name="lastName"
-            render={({ field }) => (
-              <FormItem className="space-y-1 flex flex-col items-start">
-                <FormLabel>Last Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter Last Name" type="text" {...field} />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          </div>
           <FormField
             control={form.control}
             name="email"
@@ -170,9 +139,8 @@ export function ContactForm({
               <FormItem className="space-y-1 flex flex-col items-start">
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter Email" type="email" {...field} />
+                  <Input placeholder="Enter Email" type="text" {...field} />
                 </FormControl>
-
                 <FormMessage />
               </FormItem>
             )}
@@ -187,43 +155,61 @@ export function ContactForm({
                 <FormControl className="w-full">
                   <PhoneInput placeholder="Enter phone number." {...field} defaultCountry="US" />
                 </FormControl>
-
                 <FormMessage />
               </FormItem>
             )}
           />
-
-          <FormField
-            control={form.control}
-            name="country"
-            render={({ field }) => (
-              <FormItem className="space-y-1">
-                <div className="text-left">
-                  <FormLabel>Country</FormLabel>
-                </div>
-                <FormControl>
-                  <LocationSelector
-                    onCountryChange={(country) => {
-                      setCountryName(country?.iso2 || '');
-                      form.setValue(field.name, [country?.name || '', stateName || '']);
-                    }}
-                    onStateChange={(state) => {
-                      setStateName(state?.name || '');
-                      form.setValue(field.name, [
-                        form.getValues(field.name)[0] || '',
-                        state?.name || '',
-                      ]);
-                    }}
-                  />
-                </FormControl>
-                <FormDescription>
-                  If your country has states, it will be appear after selecting country
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
+          <div className="flex gap-4 w-full">
+            <div className="flex-1 flex-grow items-start">
+              <FormField
+                control={form.control}
+                name="country"
+                render={({ field }) => (
+                  <FormItem className="space-y-1">
+                    <div className="text-left">
+                      <FormLabel>Country</FormLabel>
+                    </div>
+                    <FormControl>
+                      <CountrySelector
+                        onCountryChange={(country) => {
+                          setSelectedCountry(country);
+                          form.setValue(field.name, country?.name || '');
+                          form.setValue('state', '');
+                        }}
+                        selectedCountry={selectedCountry}
+                      />
+                    </FormControl>
+                    <FormMessage className="text-start" />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="flex-1 flex-grow items-start">
+              <FormField
+                control={form.control}
+                name="state"
+                render={({ field }) => (
+                  <FormItem className="space-y-1">
+                    <div className="text-left">
+                      <FormLabel>State</FormLabel>
+                    </div>
+                    <FormControl>
+                      <StateInput
+                        selectedState={selectedState}
+                        control={form.control}
+                        onStateChange={(state) => {
+                          setSelectedState(state);
+                          form.setValue(field.name, state?.name || '');
+                        }}
+                        selectedCountry={selectedCountry}
+                      />
+                    </FormControl>
+                    <FormMessage className="text-start" />
+                  </FormItem>
+                )}
+              />
+            </div>
+          </div>
           <FormField
             control={form.control}
             name="city"
@@ -253,8 +239,8 @@ export function ContactForm({
             )}
           />
 
-          <div className="grid grid-cols-12 gap-4 pb-2">
-            <div className="col-span-6">
+          <div className="flex gap-4 w-full pb-2">
+            <div className="flex-1 flex-grow items-start">
               <FormField
                 control={form.control}
                 name="postalCode"
@@ -271,7 +257,7 @@ export function ContactForm({
               />
             </div>
 
-            <div className="col-span-6">
+            <div className="flex-1 flex-grow items-start">
               <FormField
                 control={form.control}
                 name="organization"
