@@ -52,6 +52,7 @@ export type WidgetConfig = {
      */
     walletConfig?: {
       walletConnectKey?: string;
+      infuraApiKey?: string;
       walletConnect?: WalletConnectParameters;
       coinbase?: CoinbaseWalletParameters;
       metaMask?: MetaMaskParameters;
