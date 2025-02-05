@@ -224,7 +224,7 @@ export const useCheckout = () => {
           domainLength: 1,
         }));
         // eslint-disable-next-line no-console
-        console.log('Use Checkout ', { contactInfo, contact });
+        console.log('Use Checkout ', { contact });
         const payload = {
           paymentOptions: {
             contractAddress: selectedPaymentMethod.contractAddress,
@@ -289,6 +289,12 @@ export const useCheckout = () => {
     walletClient,
     isConnectWalletIntegrationMode,
   ]);
+
+  useEffect(() => {
+    if (contactInfo?.contact && !connectWallet?.evmWallet) {
+      setContactInfo((old) => ({ ...old, contact: null }));
+    }
+  }, [connectWallet?.evmWallet, contactInfo?.contact]);
 
   return {
     selectedPaymentMethod,

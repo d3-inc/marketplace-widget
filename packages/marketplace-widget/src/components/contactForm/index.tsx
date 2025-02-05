@@ -9,7 +9,6 @@ import type { ContactInfo, RegistrantContact } from '../../views/cart/hooks/type
 import { Button } from '../ui/button.js';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form.js';
 import { Input } from '../ui/input.js';
-import { PhoneInput } from '../ui/phoneInput.js';
 import { ScrollArea } from '../ui/scrollArea.js';
 import { CountrySelector } from './countrySelector.js';
 import { contactFormSchema } from './schema.js';
@@ -64,9 +63,8 @@ export function ContactForm({
         street: values.street,
         city: values.city,
         organization: values.organization,
-        // phone: values.phone,
-        phoneCountryCode: '+1',
-        phone: '2014563452',
+        phone: values.phone,
+        phoneCountryCode: values.phoneCountryCode,
       };
       setContactInfo({
         isFormOpen: false,
@@ -145,20 +143,38 @@ export function ContactForm({
               </FormItem>
             )}
           />
-
-          <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem className="space-y-1 flex flex-col items-start">
-                <FormLabel>Phone number</FormLabel>
-                <FormControl className="w-full">
-                  <PhoneInput placeholder="Enter phone number." {...field} defaultCountry="US" />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <div className="flex gap-4 w-full">
+            <div className="flex-[8] items-start">
+              <FormField
+                control={form.control}
+                name="phoneCountryCode"
+                render={({ field }) => (
+                  <FormItem className="space-y-1 flex flex-col items-start">
+                    <FormLabel>Phone Country Code</FormLabel>
+                    <FormControl>
+                      <Input placeholder="+1" type="text" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="flex-[12] items-start">
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem className="space-y-1 flex flex-col items-start">
+                    <FormLabel>Phone</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter Phone number" type="text" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          </div>
           <div className="flex gap-4 w-full">
             <div className="flex-1 flex-grow items-start">
               <FormField

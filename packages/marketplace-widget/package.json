@@ -58,7 +58,6 @@
     "cmdk": "^1.0.4",
     "lucide-react": "^0.469.0",
     "react-hook-form": "^7.54.2",
-    "react-phone-number-input": "^3.4.10",
     "tailwind-merge": "^2.6.0",
     "viem": "^2.21.15",
     "wagmi": "^2.12.14",

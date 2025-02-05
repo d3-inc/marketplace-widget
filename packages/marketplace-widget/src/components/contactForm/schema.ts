@@ -15,7 +15,16 @@ export const contactFormSchema = z.object({
     .refine((value) => value.trim() !== '', { message: 'Email is required' }),
   phone: z
     .string({ required_error: 'Phone number is required' })
+    .min(7, 'Phone number must be at least 7 digits')
+    .max(15, 'Phone number must not exceed 15 digits')
+    .regex(/^[1-9]\d{6,14}$/, 'Invalid phone number format')
     .refine((value) => value.trim() !== '', { message: 'Phone number is required' }),
+  phoneCountryCode: z
+    .string({ required_error: 'Phone country code is required' })
+    .min(1, 'Phone country code is required')
+    .max(5, 'Phone country code must not exceed 4 digits')
+    .regex(/^\+?[1-9]\d{0,3}$/, 'Invalid phone country code format')
+    .refine((value) => value.trim() !== '', { message: 'Phone country code is required' }),
   country: z
     .string({ required_error: 'Country is required' })
     .refine((value) => value.trim() !== '', { message: 'Country is required' }),
