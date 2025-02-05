@@ -33,6 +33,7 @@ type ContactFormProps = {
   isButtonDisabled: boolean;
   setContactInfo: React.Dispatch<React.SetStateAction<ContactInfo>>;
   handleStartCheckout: (contact?: RegistrantContact) => Promise<void>;
+  contactInfo: ContactInfo['contact'];
 };
 
 export function ContactForm({
@@ -40,19 +41,18 @@ export function ContactForm({
   isButtonDisabled,
   setContactInfo,
   handleStartCheckout,
+  contactInfo,
 }: ContactFormProps) {
   const [selectedCountry, setSelectedCountry] = useState<CountryProps | null>(null);
   const [selectedState, setSelectedState] = useState<{ id: number; name: string } | null>(null);
 
   const form = useForm<z.infer<typeof contactFormSchema>>({
     resolver: zodResolver(contactFormSchema),
-    defaultValues: formDefaultValues,
+    defaultValues: contactInfo ?? formDefaultValues,
   });
 
   function onSubmit(values: z.infer<typeof contactFormSchema>) {
     try {
-      // eslint-disable-next-line prettier/prettier, no-console
-      console.log(values, selectedCountry);
       const contact = {
         firstName: values.firstName,
         lastName: values.lastName,
@@ -92,9 +92,6 @@ export function ContactForm({
         >
           <div>
             <h5 className={cn('text-sm font-semibold text-left')}>Contact Information</h5>
-            <p className={cn('text-sm text-left')}>
-              This information will be saved for future purchases
-            </p>
           </div>
           <div className="flex gap-4 w-full">
             <div className="flex-1 flex-grow items-start">

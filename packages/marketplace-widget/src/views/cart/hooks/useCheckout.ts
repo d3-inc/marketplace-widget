@@ -97,10 +97,10 @@ export const useCheckout = () => {
         isTransactionInProgress: false,
         isOrderSuccess: true,
       });
-      setContactInfo({
-        contact: null,
+      setContactInfo((old) => ({
+        ...old,
         isFormOpen: false,
-      });
+      }));
       resetCart();
     },
     [resetCart],
@@ -137,8 +137,7 @@ export const useCheckout = () => {
     },
     [widgetConfig, selectedPaymentMethod, handleOnCheckoutError, handleOnCheckoutSuccess],
   );
-  // eslint-disable-next-line no-console
-  console.log({ contactInfo });
+
   const handleCryptoCheckoutCallback = useCallback(
     async (response: CheckoutOrderRequestResponse) => {
       if (connectWallet.evmWallet && selectedPaymentMethod) {
@@ -223,8 +222,6 @@ export const useCheckout = () => {
           autoRenew: false,
           domainLength: 1,
         }));
-        // eslint-disable-next-line no-console
-        console.log('Use Checkout ', { contact });
         const payload = {
           paymentOptions: {
             contractAddress: selectedPaymentMethod.contractAddress,

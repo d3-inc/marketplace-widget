@@ -68,6 +68,7 @@ export const CartView = () => {
             setContactInfo={setContactInfo}
             isWalletIntegrationMode={isWalletIntegrationMode}
             handleStartCheckout={handleStartCheckout}
+            contactInfo={contactInfo?.contact}
             isButtonDisabled={
               startCheckoutOrder.isPending ||
               checkoutState.isTransactionInProgress ||
