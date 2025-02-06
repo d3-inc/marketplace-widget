@@ -87,7 +87,7 @@ export function CartItems({
           'h-9/12 w-full',
           isWalletIntegrationMode
             ? 'max-h-[62dvh] md:max-h-[315px]'
-            : 'max-h-[71dvh] md:max-h-[365px]',
+            : 'max-h-[71dvh] md:max-h-[385px]',
         )}
       >
         <div className="px-3">

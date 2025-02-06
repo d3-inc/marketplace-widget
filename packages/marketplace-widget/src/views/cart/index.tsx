@@ -4,7 +4,6 @@ import { useShallow } from 'zustand/react/shallow';
 import { ContactForm } from '../../components/contactForm/index.js';
 import { useStore } from '../../state/store/index.js';
 import { WidgetIntegrationMode } from '../../types/widget.js';
-import { cn } from '../../utils/twMerge.js';
 import { CartHeader } from './cartHeader.js';
 import { CartItems } from './cartItems.js';
 import { CartPaymentMethods } from './cartPaymentMethods.js';
@@ -60,24 +59,19 @@ export const CartView = () => {
     <div className="flex flex-col gap-y-2 flex-grow">
       <CartHeader handleBack={handleSearchView} />
       {contactInfo?.isFormOpen ? (
-        <div
-          id="contact-form-container"
-          className={cn('flex flex-col flex-grow gap-3 overflow-auto pb-2')}
-        >
-          <ContactForm
-            setContactInfo={setContactInfo}
-            isWalletIntegrationMode={isWalletIntegrationMode}
-            handleStartCheckout={handleStartCheckout}
-            contactInfo={contactInfo?.contact}
-            isButtonDisabled={
-              startCheckoutOrder.isPending ||
-              checkoutState.isTransactionInProgress ||
-              isPaymentOptionsError ||
-              isPaymentOptionsLoading ||
-              isSwitchNetworkInProgress
-            }
-          />
-        </div>
+        <ContactForm
+          setContactInfo={setContactInfo}
+          isWalletIntegrationMode={isWalletIntegrationMode}
+          handleStartCheckout={handleStartCheckout}
+          contactInfo={contactInfo?.contact}
+          isButtonDisabled={
+            startCheckoutOrder.isPending ||
+            checkoutState.isTransactionInProgress ||
+            isPaymentOptionsError ||
+            isPaymentOptionsLoading ||
+            isSwitchNetworkInProgress
+          }
+        />
       ) : (
         <>
           {cart.items?.length && paymentOptions?.options?.length ? (
