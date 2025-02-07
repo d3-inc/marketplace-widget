@@ -40,6 +40,6 @@ export function getFilteredRecommendations(
   return filteredRecommendations;
 }
 
-export const getIsICannDomain = (domain: { eoi: boolean }) => {
+export const getIsIcannDomain = (domain: { eoi: boolean }) => {
   return domain?.eoi === false;
 };

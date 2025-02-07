@@ -2,10 +2,10 @@ import { GlobeIcon, WalletCardsIcon } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipPortal, TooltipTrigger } from '../ui/tooltipComponent.js';
 
 import type { SearchResult } from '../../types/api.js';
-import { getIsICannDomain } from '../../utils/nameTokens.js';
+import { getIsIcannDomain } from '../../utils/nameTokens.js';
 
 export const DomainType = ({ searchResult }: { searchResult: SearchResult }) => {
-  const isIcannDomain = getIsICannDomain(searchResult);
+  const isIcannDomain = getIsIcannDomain(searchResult);
   return (
     <Tooltip>
       <TooltipTrigger asChild>

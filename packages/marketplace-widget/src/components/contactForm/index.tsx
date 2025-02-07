@@ -154,7 +154,7 @@ export function ContactForm({
                         <FormControl>
                           <Input placeholder="+1" type="text" {...field} />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-start" />
                       </FormItem>
                     )}
                   />
@@ -169,7 +169,7 @@ export function ContactForm({
                         <FormControl>
                           <Input placeholder="Enter Phone number" type="text" {...field} />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-start" />
                       </FormItem>
                     )}
                   />

@@ -12,7 +12,7 @@ import type {
   PaymentOption,
   PaymentOptionRequestResponse,
 } from '../../../types/api.js';
-import { getIsICannDomain } from '../../../utils/nameTokens.js';
+import { getIsIcannDomain } from '../../../utils/nameTokens.js';
 import type {
   CheckoutState,
   ContactInfo,
@@ -203,7 +203,7 @@ export const useCheckout = () => {
         if (!isCorrectChain) return;
       }
       const registrantContact = contactInfo?.contact ? contactInfo?.contact : contact;
-      const isOrderContainsICannDomain = cart?.items?.some((domain) => getIsICannDomain(domain));
+      const isOrderContainsICannDomain = cart?.items?.some((domain) => getIsIcannDomain(domain));
       if (isOrderContainsICannDomain && !registrantContact) {
         setContactInfo((old) => ({ ...old, isFormOpen: true }));
         return;

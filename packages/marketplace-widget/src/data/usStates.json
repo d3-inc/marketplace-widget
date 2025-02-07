@@ -2,727 +2,331 @@
   {
     "id": 1456,
     "name": "Alabama",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "AL",
-    "type": "state",
-    "latitude": "32.31823140",
-    "longitude": "-86.90229800"
+    "stateCode": "AL"
   },
   {
     "id": 1400,
     "name": "Alaska",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "AK",
-    "type": "state",
-    "latitude": "64.20084130",
-    "longitude": "-149.49367330"
+    "stateCode": "AK"
   },
   {
     "id": 1424,
     "name": "American Samoa",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "AS",
-    "type": "outlying area",
-    "latitude": "-14.27097200",
-    "longitude": "-170.13221700"
+    "stateCode": "AS"
   },
   {
     "id": 1434,
     "name": "Arizona",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "AZ",
-    "type": "state",
-    "latitude": "34.04892810",
-    "longitude": "-111.09373110"
+    "stateCode": "AZ"
   },
   {
     "id": 1444,
     "name": "Arkansas",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "AR",
-    "type": "state",
-    "latitude": "35.20105000",
-    "longitude": "-91.83183340"
+    "stateCode": "AR"
   },
   {
     "id": 1402,
     "name": "Baker Island",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "UM-81",
-    "type": "islands / groups of islands",
-    "latitude": "0.19362660",
-    "longitude": "-176.47690800"
+    "stateCode": "UM-81"
   },
   {
     "id": 1416,
     "name": "California",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "CA",
-    "type": "state",
-    "latitude": "36.77826100",
-    "longitude": "-119.41793240"
+    "stateCode": "CA"
   },
   {
     "id": 1450,
     "name": "Colorado",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "CO",
-    "type": "state",
-    "latitude": "39.55005070",
-    "longitude": "-105.78206740"
+    "stateCode": "CO"
   },
   {
     "id": 1435,
     "name": "Connecticut",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "CT",
-    "type": "state",
-    "latitude": "41.60322070",
-    "longitude": "-73.08774900"
+    "stateCode": "CT"
   },
   {
     "id": 1399,
     "name": "Delaware",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "DE",
-    "type": "state",
-    "latitude": "38.91083250",
-    "longitude": "-75.52766990"
+    "stateCode": "DE"
   },
   {
     "id": 1437,
     "name": "District of Columbia",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "DC",
-    "type": "district",
-    "latitude": "38.90719230",
-    "longitude": "-77.03687070"
+    "stateCode": "DC"
   },
   {
     "id": 1436,
     "name": "Florida",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "FL",
-    "type": "state",
-    "latitude": "27.66482740",
-    "longitude": "-81.51575350"
+    "stateCode": "FL"
   },
   {
     "id": 1455,
     "name": "Georgia",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "GA",
-    "type": "state",
-    "latitude": "32.16562210",
-    "longitude": "-82.90007510"
+    "stateCode": "GA"
   },
   {
     "id": 1412,
     "name": "Guam",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "GU",
-    "type": "outlying area",
-    "latitude": "13.44430400",
-    "longitude": "144.79373100"
+    "stateCode": "GU"
   },
   {
     "id": 1411,
     "name": "Hawaii",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "HI",
-    "type": "state",
-    "latitude": "19.89676620",
-    "longitude": "-155.58278180"
+    "stateCode": "HI"
   },
   {
     "id": 1398,
     "name": "Howland Island",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "UM-84",
-    "type": "islands / groups of islands",
-    "latitude": "0.81132190",
-    "longitude": "-176.61827360"
+    "stateCode": "UM-84"
   },
   {
     "id": 1460,
     "name": "Idaho",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "ID",
-    "type": "state",
-    "latitude": "44.06820190",
-    "longitude": "-114.74204080"
+    "stateCode": "ID"
   },
   {
     "id": 1425,
     "name": "Illinois",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "IL",
-    "type": "state",
-    "latitude": "40.63312490",
-    "longitude": "-89.39852830"
+    "stateCode": "IL"
   },
   {
     "id": 1440,
     "name": "Indiana",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "IN",
-    "type": "state",
-    "latitude": "40.26719410",
-    "longitude": "-86.13490190"
+    "stateCode": "IN"
   },
   {
     "id": 1459,
     "name": "Iowa",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "IA",
-    "type": "state",
-    "latitude": "41.87800250",
-    "longitude": "-93.09770200"
+    "stateCode": "IA"
   },
   {
     "id": 1410,
     "name": "Jarvis Island",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "UM-86",
-    "type": "islands / groups of islands",
-    "latitude": "-0.37435030",
-    "longitude": "-159.99672060"
+    "stateCode": "UM-86"
   },
   {
     "id": 1428,
     "name": "Johnston Atoll",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "UM-67",
-    "type": "islands / groups of islands",
-    "latitude": "16.72950350",
-    "longitude": "-169.53364770"
+    "stateCode": "UM-67"
   },
   {
     "id": 1406,
     "name": "Kansas",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "KS",
-    "type": "state",
-    "latitude": "39.01190200",
-    "longitude": "-98.48424650"
+    "stateCode": "KS"
   },
   {
     "id": 1419,
     "name": "Kentucky",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "KY",
-    "type": "state",
-    "latitude": "37.83933320",
-    "longitude": "-84.27001790"
+    "stateCode": "KY"
   },
   {
     "id": 1403,
     "name": "Kingman Reef",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "UM-89",
-    "type": "islands / groups of islands",
-    "latitude": "6.38333300",
-    "longitude": "-162.41666700"
+    "stateCode": "UM-89"
   },
   {
     "id": 1457,
     "name": "Louisiana",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "LA",
-    "type": "state",
-    "latitude": "30.98429770",
-    "longitude": "-91.96233270"
+    "stateCode": "LA"
   },
   {
     "id": 1453,
     "name": "Maine",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "ME",
-    "type": "state",
-    "latitude": "45.25378300",
-    "longitude": "-69.44546890"
+    "stateCode": "ME"
   },
   {
     "id": 1401,
     "name": "Maryland",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "MD",
-    "type": "state",
-    "latitude": "39.04575490",
-    "longitude": "-76.64127120"
+    "stateCode": "MD"
   },
   {
     "id": 1433,
     "name": "Massachusetts",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "MA",
-    "type": "state",
-    "latitude": "42.40721070",
-    "longitude": "-71.38243740"
+    "stateCode": "MA"
   },
   {
     "id": 1426,
     "name": "Michigan",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "MI",
-    "type": "state",
-    "latitude": "44.31484430",
-    "longitude": "-85.60236430"
+    "stateCode": "MI"
   },
   {
     "id": 1438,
     "name": "Midway Atoll",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "UM-71",
-    "type": "islands / groups of islands",
-    "latitude": "28.20721680",
-    "longitude": "-177.37349260"
+    "stateCode": "UM-71"
   },
   {
     "id": 1420,
     "name": "Minnesota",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "MN",
-    "type": "state",
-    "latitude": "46.72955300",
-    "longitude": "-94.68589980"
+    "stateCode": "MN"
   },
   {
     "id": 1430,
     "name": "Mississippi",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "MS",
-    "type": "state",
-    "latitude": "32.35466790",
-    "longitude": "-89.39852830"
+    "stateCode": "MS"
   },
   {
     "id": 1451,
     "name": "Missouri",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "MO",
-    "type": "state",
-    "latitude": "37.96425290",
-    "longitude": "-91.83183340"
+    "stateCode": "MO"
   },
   {
     "id": 1446,
     "name": "Montana",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "MT",
-    "type": "state",
-    "latitude": "46.87968220",
-    "longitude": "-110.36256580"
+    "stateCode": "MT"
   },
   {
     "id": 1439,
     "name": "Navassa Island",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "UM-76",
-    "type": "islands / groups of islands",
-    "latitude": "18.41006890",
-    "longitude": "-75.01146120"
+    "stateCode": "UM-76"
   },
   {
     "id": 1408,
     "name": "Nebraska",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "NE",
-    "type": "state",
-    "latitude": "41.49253740",
-    "longitude": "-99.90181310"
+    "stateCode": "NE"
   },
   {
     "id": 1458,
     "name": "Nevada",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "NV",
-    "type": "state",
-    "latitude": "38.80260970",
-    "longitude": "-116.41938900"
+    "stateCode": "NV"
   },
   {
     "id": 1404,
     "name": "New Hampshire",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "NH",
-    "type": "state",
-    "latitude": "43.19385160",
-    "longitude": "-71.57239530"
+    "stateCode": "NH"
   },
   {
     "id": 1417,
     "name": "New Jersey",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "NJ",
-    "type": "state",
-    "latitude": "40.05832380",
-    "longitude": "-74.40566120"
+    "stateCode": "NJ"
   },
   {
     "id": 1423,
     "name": "New Mexico",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "NM",
-    "type": "state",
-    "latitude": "34.51994020",
-    "longitude": "-105.87009010"
+    "stateCode": "NM"
   },
   {
     "id": 1452,
     "name": "New York",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "NY",
-    "type": "state",
-    "latitude": "40.71277530",
-    "longitude": "-74.00597280"
+    "stateCode": "NY"
   },
   {
     "id": 1447,
     "name": "North Carolina",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "NC",
-    "type": "state",
-    "latitude": "35.75957310",
-    "longitude": "-79.01929970"
+    "stateCode": "NC"
   },
   {
     "id": 1418,
     "name": "North Dakota",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "ND",
-    "type": "state",
-    "latitude": "47.55149260",
-    "longitude": "-101.00201190"
+    "stateCode": "ND"
   },
   {
     "id": 1431,
     "name": "Northern Mariana Islands",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "MP",
-    "type": "outlying area",
-    "latitude": "15.09790000",
-    "longitude": "145.67390000"
+    "stateCode": "MP"
   },
   {
     "id": 4851,
     "name": "Ohio",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "OH",
-    "type": "state",
-    "latitude": "40.41728710",
-    "longitude": "-82.90712300"
+    "stateCode": "OH"
   },
   {
     "id": 1421,
     "name": "Oklahoma",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "OK",
-    "type": "state",
-    "latitude": "35.46756020",
-    "longitude": "-97.51642760"
+    "stateCode": "OK"
   },
   {
     "id": 1415,
     "name": "Oregon",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "OR",
-    "type": "state",
-    "latitude": "43.80413340",
-    "longitude": "-120.55420120"
+    "stateCode": "OR"
   },
   {
     "id": 1448,
     "name": "Palmyra Atoll",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "UM-95",
-    "type": "islands / groups of islands",
-    "latitude": "5.88850260",
-    "longitude": "-162.07866560"
+    "stateCode": "UM-95"
   },
   {
     "id": 1422,
     "name": "Pennsylvania",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "PA",
-    "type": "state",
-    "latitude": "41.20332160",
-    "longitude": "-77.19452470"
+    "stateCode": "PA"
   },
   {
     "id": 1449,
     "name": "Puerto Rico",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "PR",
-    "type": "outlying area",
-    "latitude": "18.22083300",
-    "longitude": "-66.59014900"
+    "stateCode": "PR"
   },
   {
     "id": 1461,
     "name": "Rhode Island",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "RI",
-    "type": "state",
-    "latitude": "41.58009450",
-    "longitude": "-71.47742910"
+    "stateCode": "RI"
   },
   {
     "id": 1443,
     "name": "South Carolina",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "SC",
-    "type": "state",
-    "latitude": "33.83608100",
-    "longitude": "-81.16372450"
+    "stateCode": "SC"
   },
   {
     "id": 1445,
     "name": "South Dakota",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "SD",
-    "type": "state",
-    "latitude": "43.96951480",
-    "longitude": "-99.90181310"
+    "stateCode": "SD"
   },
   {
     "id": 1454,
     "name": "Tennessee",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "TN",
-    "type": "state",
-    "latitude": "35.51749130",
-    "longitude": "-86.58044730"
+    "stateCode": "TN"
   },
   {
     "id": 1407,
     "name": "Texas",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "TX",
-    "type": "state",
-    "latitude": "31.96859880",
-    "longitude": "-99.90181310"
+    "stateCode": "TX"
   },
   {
     "id": 1432,
     "name": "United States Minor Outlying Islands",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "UM",
-    "type": "outlying area",
-    "latitude": "19.28231920",
-    "longitude": "166.64704700"
+    "stateCode": "UM"
   },
   {
     "id": 1413,
     "name": "United States Virgin Islands",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "VI",
-    "type": "outlying area",
-    "latitude": "18.33576500",
-    "longitude": "-64.89633500"
+    "stateCode": "VI"
   },
   {
     "id": 1414,
     "name": "Utah",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "UT",
-    "type": "state",
-    "latitude": "39.32098010",
-    "longitude": "-111.09373110"
+    "stateCode": "UT"
   },
   {
     "id": 1409,
     "name": "Vermont",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "VT",
-    "type": "state",
-    "latitude": "44.55880280",
-    "longitude": "-72.57784150"
+    "stateCode": "VT"
   },
   {
     "id": 1427,
     "name": "Virginia",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "VA",
-    "type": "state",
-    "latitude": "37.43157340",
-    "longitude": "-78.65689420"
+    "stateCode": "VA"
   },
   {
     "id": 1405,
     "name": "Wake Island",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "UM-79",
-    "type": "islands / groups of islands",
-    "latitude": "19.27961900",
-    "longitude": "166.64993480"
+    "stateCode": "UM-79"
   },
   {
     "id": 1462,
     "name": "Washington",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "WA",
-    "type": "state",
-    "latitude": "47.75107410",
-    "longitude": "-120.74013850"
+    "stateCode": "WA"
   },
   {
     "id": 1429,
     "name": "West Virginia",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "WV",
-    "type": "state",
-    "latitude": "38.59762620",
-    "longitude": "-80.45490260"
+    "stateCode": "WV"
   },
   {
     "id": 1441,
     "name": "Wisconsin",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "WI",
-    "type": "state",
-    "latitude": "43.78443970",
-    "longitude": "-88.78786780"
+    "stateCode": "WI"
   },
   {
     "id": 1442,
     "name": "Wyoming",
-    "country_id": 233,
-    "country_code": "US",
-    "country_name": "United States",
-    "state_code": "WY",
-    "type": "state",
-    "latitude": "43.07596780",
-    "longitude": "-107.29028390"
+    "stateCode": "WY"
   }
 ]
