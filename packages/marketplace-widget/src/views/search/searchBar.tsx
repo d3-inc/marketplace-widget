@@ -49,7 +49,6 @@ export function SearchBar({
             autoCorrect="false"
             autoComplete="false"
             autoCapitalize="false"
-            data-testid="search-field"
             maxLength={63}
             minLength={1}
             aria-invalid={!!errorMessage}

@@ -13,7 +13,7 @@ export const DomainType = ({ searchResult }: { searchResult: SearchResult }) => 
       </TooltipTrigger>
       <TooltipPortal>
         <TooltipContent className="tooltip-content">
-          {isIcannDomain ? 'Real Domain' : 'Web3 name'}
+          {isIcannDomain ? 'Icann Domain' : 'Web3 name'}
         </TooltipContent>
       </TooltipPortal>
     </Tooltip>

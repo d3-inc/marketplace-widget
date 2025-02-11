@@ -1,6 +1,12 @@
 import { formatBelowThresholdAmount } from '../../utils/currency.js';
 
-export const ThresholdFloorPrice = ({ usdPrice }: { usdPrice: boolean }) => {
+export const ThresholdFloorPrice = ({
+  usdPrice,
+  nativeCurrency,
+}: {
+  usdPrice: boolean;
+  nativeCurrency?: string;
+}) => {
   if (usdPrice) {
     return (
       <span>
@@ -23,6 +29,7 @@ export const ThresholdFloorPrice = ({ usdPrice }: { usdPrice: boolean }) => {
           localeCode: navigator?.language,
           showCurrencySymbol: usdPrice,
         })}
+        &nbsp;{nativeCurrency ?? ''}
       </span>
     </>
   );
