@@ -13,7 +13,7 @@ import { ScrollArea } from '../ui/scrollArea.js';
 import { CountrySelector } from './countrySelector.js';
 import { contactFormSchema } from './schema.js';
 import { StateInput } from './stateInput.js';
-import type { CountryProps } from './types.js';
+import type { CountryProps, StateProps } from './types.js';
 
 const formDefaultValues = {
   firstName: '',
@@ -34,6 +34,7 @@ type ContactFormProps = {
   setContactInfo: React.Dispatch<React.SetStateAction<ContactInfo>>;
   handleStartCheckout: (contact?: RegistrantContact) => Promise<void>;
   contactInfo: ContactInfo['contact'];
+  children: React.ReactNode;
 };
 
 export function ContactForm({
@@ -42,9 +43,10 @@ export function ContactForm({
   setContactInfo,
   handleStartCheckout,
   contactInfo,
+  children,
 }: ContactFormProps) {
   const [selectedCountry, setSelectedCountry] = useState<CountryProps | null>(null);
-  const [selectedState, setSelectedState] = useState<{ id: number; name: string } | null>(null);
+  const [selectedState, setSelectedState] = useState<StateProps | null>(null);
 
   const form = useForm<z.infer<typeof contactFormSchema>>({
     resolver: zodResolver(contactFormSchema),
@@ -66,10 +68,10 @@ export function ContactForm({
         phone: values.phone,
         phoneCountryCode: values.phoneCountryCode,
       };
-      setContactInfo({
-        isFormOpen: false,
+      setContactInfo((old) => ({
+        ...old,
         contact,
-      });
+      }));
       handleStartCheckout(contact);
     } catch (error) {
       console.error('Form submission error', error);
@@ -105,7 +107,12 @@ export function ContactForm({
                       <FormItem className="space-y-1 flex flex-col items-start">
                         <FormLabel>First Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="First Name" type="text" {...field} />
+                          <Input
+                            placeholder="First Name"
+                            type="text"
+                            readOnly={isButtonDisabled}
+                            {...field}
+                          />
                         </FormControl>
 
                         <FormMessage />
@@ -121,7 +128,12 @@ export function ContactForm({
                       <FormItem className="space-y-1 flex flex-col items-start">
                         <FormLabel>Last Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter Last Name" type="text" {...field} />
+                          <Input
+                            placeholder="Enter Last Name"
+                            type="text"
+                            readOnly={isButtonDisabled}
+                            {...field}
+                          />
                         </FormControl>
 
                         <FormMessage />
@@ -137,7 +149,12 @@ export function ContactForm({
                   <FormItem className="space-y-1 flex flex-col items-start">
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter Email" type="text" {...field} />
+                      <Input
+                        placeholder="Enter Email"
+                        type="text"
+                        readOnly={isButtonDisabled}
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -150,9 +167,14 @@ export function ContactForm({
                     name="phoneCountryCode"
                     render={({ field }) => (
                       <FormItem className="space-y-1 flex flex-col items-start">
-                        <FormLabel>Phone Country Code</FormLabel>
+                        <FormLabel>Country Code</FormLabel>
                         <FormControl>
-                          <Input placeholder="+1" type="text" {...field} />
+                          <Input
+                            placeholder="+1"
+                            type="text"
+                            readOnly={isButtonDisabled}
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage className="text-start" />
                       </FormItem>
@@ -167,7 +189,12 @@ export function ContactForm({
                       <FormItem className="space-y-1 flex flex-col items-start">
                         <FormLabel>Phone</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter Phone number" type="text" {...field} />
+                          <Input
+                            placeholder="Enter Phone number"
+                            type="text"
+                            readOnly={isButtonDisabled}
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage className="text-start" />
                       </FormItem>
@@ -215,7 +242,7 @@ export function ContactForm({
                             control={form.control}
                             onStateChange={(state) => {
                               setSelectedState(state);
-                              form.setValue(field.name, state?.name || '');
+                              form.setValue(field.name, state?.stateCode || '');
                             }}
                             selectedCountry={selectedCountry}
                           />
@@ -233,7 +260,12 @@ export function ContactForm({
                   <FormItem className="space-y-1 flex flex-col items-start">
                     <FormLabel>City</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter city" type="text" {...field} />
+                      <Input
+                        readOnly={isButtonDisabled}
+                        placeholder="Enter city"
+                        type="text"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -247,7 +279,12 @@ export function ContactForm({
                   <FormItem className="space-y-1 flex flex-col items-start">
                     <FormLabel>Street</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter street address" type="text" {...field} />
+                      <Input
+                        readOnly={isButtonDisabled}
+                        placeholder="Enter street address"
+                        type="text"
+                        {...field}
+                      />
                     </FormControl>
 
                     <FormMessage />
@@ -264,7 +301,12 @@ export function ContactForm({
                       <FormItem className="space-y-1 flex flex-col items-start">
                         <FormLabel>Zipcode</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter Zipcode" type="text" {...field} />
+                          <Input
+                            readOnly={isButtonDisabled}
+                            placeholder="Enter Zipcode"
+                            type="text"
+                            {...field}
+                          />
                         </FormControl>
 
                         <FormMessage />
@@ -281,7 +323,12 @@ export function ContactForm({
                       <FormItem className="space-y-1 flex flex-col items-start">
                         <FormLabel>Organization</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter Organization" type="text" {...field} />
+                          <Input
+                            placeholder="Enter Organization"
+                            type="text"
+                            readOnly={isButtonDisabled}
+                            {...field}
+                          />
                         </FormControl>
 
                         <FormMessage />
@@ -293,6 +340,7 @@ export function ContactForm({
             </div>
           </ScrollArea>
         </div>
+        {children}
         <div className="px-3">
           <Button
             disabled={isButtonDisabled}

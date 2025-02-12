@@ -59,7 +59,7 @@ export const CountrySelector = ({
           <CommandList>
             <CommandEmpty>No country found.</CommandEmpty>
             <CommandGroup>
-              <ScrollArea className="h-[300px]">
+              <ScrollArea className="h-[250px] md:h-[300px]">
                 {countriesData.map((country) => (
                   <CommandItem
                     key={country.id}

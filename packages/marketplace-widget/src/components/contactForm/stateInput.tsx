@@ -24,10 +24,10 @@ import type { CountryProps, StateProps } from './types.js';
 
 interface StateInputProps {
   disabled?: boolean;
-  onStateChange: (state: { id: number; name: string } | null) => void;
+  onStateChange: (state: StateProps | null) => void;
   control: Control<z.infer<typeof contactFormSchema>>;
   selectedCountry: CountryProps | null;
-  selectedState: { id: number; name: string } | null;
+  selectedState: StateProps | null;
 }
 const statesData = UsStates as StateProps[];
 
@@ -104,7 +104,7 @@ export const StateInput = ({
               {...field}
               onChange={(e) => {
                 const value = e.target.value;
-                onStateChange({ id: 0, name: value });
+                onStateChange({ id: 0, name: value, stateCode: value });
               }}
               disabled={disabled}
               readOnly={!selectedCountry}

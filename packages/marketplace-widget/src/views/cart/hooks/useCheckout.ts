@@ -233,6 +233,7 @@ export const useCheckout = () => {
         };
         startCheckoutOrder.mutate(payload, {
           onSuccess: async (response) => {
+            setContactInfo((old) => ({ ...old, isFormOpen: false }));
             if (isConnectWalletIntegrationMode) {
               handleCryptoCheckoutCallback(response);
               return;

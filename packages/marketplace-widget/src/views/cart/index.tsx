@@ -7,6 +7,7 @@ import { WidgetIntegrationMode } from '../../types/widget.js';
 import { CartHeader } from './cartHeader.js';
 import { CartItems } from './cartItems.js';
 import { CartPaymentMethods } from './cartPaymentMethods.js';
+import { CheckoutError } from './checkoutError.js';
 import { useCheckout } from './hooks/useCheckout.js';
 import { PurchaseSuccess } from './purchaseSuccess.js';
 
@@ -67,11 +68,22 @@ export const CartView = () => {
           isButtonDisabled={
             startCheckoutOrder.isPending ||
             checkoutState.isTransactionInProgress ||
-            isPaymentOptionsError ||
             isPaymentOptionsLoading ||
             isSwitchNetworkInProgress
           }
-        />
+        >
+          <>
+            {startCheckoutOrder.isError || checkoutState.isError || isPaymentOptionsError ? (
+              <div className="my-1">
+                <CheckoutError
+                  checkoutState={checkoutState}
+                  startCheckoutOrder={startCheckoutOrder}
+                  paymentOptionsError={paymentOptionsError}
+                />
+              </div>
+            ) : null}
+          </>
+        </ContactForm>
       ) : (
         <>
           {cart.items?.length && paymentOptions?.options?.length ? (
