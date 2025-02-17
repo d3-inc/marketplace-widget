@@ -35,7 +35,11 @@ export const SearchResultCard = ({
             <div className="flex items-center gap-1">
               <DomainType searchResult={searchResult} />
               <p className="text-lg font-semibold text-left break-all">
-                {nameTokenFormatter({ sld: searchResult.sld, tld: searchResult.tld, eoi: true })}
+                {nameTokenFormatter({
+                  sld: searchResult.sld,
+                  tld: searchResult.tld,
+                  eoi: searchResult?.eoi,
+                })}
               </p>
             </div>
             {isDomainAvailable ? (
