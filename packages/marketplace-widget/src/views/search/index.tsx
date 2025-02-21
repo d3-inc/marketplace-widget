@@ -30,19 +30,20 @@ export const Search = () => {
     : false;
 
   return (
-    <div className="flex flex-col gap-y-2 flex-grow">
+    <div className="flex flex-col gap-y-2 flex-grow relative h-full">
       <SearchBar
         isSearchDisabled={isLoading}
         handleSearchSubmit={handleSearchSubmit}
         initialSearch={searchQueryParams.sld}
       />
-      <div id="search-results" className={cn('flex flex-col flex-grow gap-3 pb-2')}>
+      <div id="search-results" className={cn('flex flex-col flex-grow gap-3 pb-2 h-full')}>
         <ScrollArea
           className={clsx(
-            'h-9/12',
-            isWalletIntegrationMode
-              ? 'max-h-[67dvh] md:max-h-[365px]'
-              : 'max-h-[68dvh] md:max-h-[415px]',
+            'md:h-[calc(60dvh-140px)] h-[calc(90dvh-140px)]',
+            'max-h-[-webkit-fill-available]',
+            // isWalletIntegrationMode
+            //   ? 'max-h-[67dvh] md:max-h-[365px]'
+            //   : 'max-h-[68dvh] md:max-h-[415px]',
           )}
         >
           <div className="px-3">

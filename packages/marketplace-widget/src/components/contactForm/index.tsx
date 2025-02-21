@@ -83,7 +83,7 @@ export function ContactForm({
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         id="contact-form-container"
-        className="flex flex-col w-full h-full flex-grow"
+        className="flex flex-col w-full md:h-[calc(60dvh-60px)] h-[calc(90dvh-60px)] flex-grow"
       >
         <div className="mb-2 px-3">
           <h5 className={cn('text-sm font-semibold text-left')}>Contact Information</h5>
