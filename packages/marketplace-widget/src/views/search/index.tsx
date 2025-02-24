@@ -36,14 +36,14 @@ export const Search = () => {
         handleSearchSubmit={handleSearchSubmit}
         initialSearch={searchQueryParams.sld}
       />
-      <div id="search-results" className={cn('flex flex-col flex-grow gap-3 pb-2 h-full')}>
+      <div id="search-results" className={cn('flex flex-col flex-grow gap-3 h-full')}>
         <ScrollArea
           className={clsx(
-            'md:h-[calc(60dvh-140px)] h-[calc(90dvh-140px)]',
+            'min-h-[100px]',
             'max-h-[-webkit-fill-available]',
-            // isWalletIntegrationMode
-            //   ? 'max-h-[67dvh] md:max-h-[365px]'
-            //   : 'max-h-[68dvh] md:max-h-[415px]',
+            isWalletIntegrationMode
+              ? 'md:h-[calc(60dvh-200px)] h-[calc(90dvh-245px)]'
+              : 'md:h-[calc(60dvh-140px)] h-[calc(90dvh-140px)]',
           )}
         >
           <div className="px-3">

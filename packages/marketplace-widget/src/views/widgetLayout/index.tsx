@@ -31,11 +31,10 @@ const WidgetLayout = () => {
   }
   const isWalletIntegrationMode =
     !widgetConfig.onPurchaseInit && !widgetConfig?.walletAddress?.length;
-  // md:h-[560px]  md:max-h-[75svh]
   return (
     <div
       className={
-        'flex flex-col w-[94svw] h-[calc(90dvh)] md:h-[calc(60dvh)] max-h:[90dvh]  max-w-[425px] bg-primary-foreground rounded-xl absolute bottom-16 right-0 overflow-auto shadow-xl border dark:border-none dark:bg-[#0B0B23] dark:border-interactive-border'
+        'flex flex-col w-[94svw] h-[calc(90dvh_-_50px)] md:h-[calc(60dvh)] max-h-[calc(90dvh_-_50px)]  max-w-[425px] bg-primary-foreground rounded-xl absolute bottom-16 right-0 overflow-auto shadow-xl border dark:border-none dark:bg-[#0B0B23] dark:border-interactive-border'
       }
     >
       {isWalletIntegrationMode ? <ConnectWallet /> : null}
