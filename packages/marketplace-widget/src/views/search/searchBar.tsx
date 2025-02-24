@@ -26,6 +26,7 @@ export function SearchBar({
 
   return (
     <form
+      className="sticky bg-white top-0"
       onSubmit={(e) => {
         e.preventDefault();
         handleSearchAction();
