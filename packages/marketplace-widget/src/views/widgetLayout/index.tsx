@@ -34,12 +34,14 @@ const WidgetLayout = () => {
   return (
     <div
       className={
-        'flex flex-col w-[94svw] h-[calc(90dvh_-_50px)] md:h-[calc(60dvh)] max-h-[calc(90dvh_-_50px)]  max-w-[425px] bg-primary-foreground rounded-xl absolute bottom-16 right-0 overflow-auto shadow-xl border dark:border-none dark:bg-[#0B0B23] dark:border-interactive-border'
+        'flex flex-col w-[94svw] h-full max-h-[calc(90dvh)] md:max-h-[calc(60dvh)] max-w-[425px] bg-primary-foreground rounded-xl fixed bottom-[5rem] right-[16px] overflow-auto shadow-xl border dark:border-none dark:bg-[#0B0B23] dark:border-interactive-border overflow-hidden'
       }
     >
-      {isWalletIntegrationMode ? <ConnectWallet /> : null}
-      {widgetSettings.isCartViewOpen ? <CartView /> : <Search />}
-      <Toaster />
+      <div className="flex flex-col h-full">
+        {isWalletIntegrationMode ? <ConnectWallet /> : null}
+        {widgetSettings.isCartViewOpen ? <CartView /> : <Search />}
+        <Toaster />
+      </div>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { Loader2 } from 'lucide-react';
 import { useCallback } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { ContactForm } from '../../components/contactForm/index.js';
+import { ScrollArea } from '../../components/ui/scrollArea.js';
 import { useStore } from '../../state/store/index.js';
 import { WidgetIntegrationMode } from '../../types/widget.js';
 import { CartHeader } from './cartHeader.js';
@@ -57,57 +58,59 @@ export const CartView = () => {
     );
   }
   return (
-    <div className="flex flex-col gap-y-2 flex-grow">
-      <CartHeader handleBack={handleSearchView} />
-      {contactInfo?.isFormOpen ? (
-        <ContactForm
-          setContactInfo={setContactInfo}
-          isWalletIntegrationMode={isWalletIntegrationMode}
-          handleStartCheckout={handleStartCheckout}
-          contactInfo={contactInfo?.contact}
-          isButtonDisabled={
-            startCheckoutOrder.isPending ||
-            checkoutState.isTransactionInProgress ||
-            isPaymentOptionsLoading ||
-            isSwitchNetworkInProgress
-          }
-        >
+    <ScrollArea className={'h-full w-full'}>
+      <div className="flex flex-col gap-y-2 flex-grow h-full overflow-y-auto">
+        <CartHeader handleBack={handleSearchView} />
+        {contactInfo?.isFormOpen ? (
+          <ContactForm
+            setContactInfo={setContactInfo}
+            // isWalletIntegrationMode={isWalletIntegrationMode}
+            handleStartCheckout={handleStartCheckout}
+            contactInfo={contactInfo?.contact}
+            isButtonDisabled={
+              startCheckoutOrder.isPending ||
+              checkoutState.isTransactionInProgress ||
+              isPaymentOptionsLoading ||
+              isSwitchNetworkInProgress
+            }
+          >
+            <>
+              {startCheckoutOrder.isError || checkoutState.isError || isPaymentOptionsError ? (
+                <div className="my-1">
+                  <CheckoutError
+                    checkoutState={checkoutState}
+                    startCheckoutOrder={startCheckoutOrder}
+                    paymentOptionsError={paymentOptionsError}
+                  />
+                </div>
+              ) : null}
+            </>
+          </ContactForm>
+        ) : (
           <>
-            {startCheckoutOrder.isError || checkoutState.isError || isPaymentOptionsError ? (
-              <div className="my-1">
-                <CheckoutError
-                  checkoutState={checkoutState}
-                  startCheckoutOrder={startCheckoutOrder}
-                  paymentOptionsError={paymentOptionsError}
-                />
-              </div>
+            {cart.items?.length && paymentOptions?.options?.length ? (
+              <CartPaymentMethods
+                selectedPaymentMethod={selectedPaymentMethod}
+                setSelectedPaymentMethod={setSelectedPaymentMethod}
+                paymentOptions={paymentOptions}
+                isPaymentOptionsLoading={isPaymentOptionsLoading}
+              />
             ) : null}
-          </>
-        </ContactForm>
-      ) : (
-        <>
-          {cart.items?.length && paymentOptions?.options?.length ? (
-            <CartPaymentMethods
+            <CartItems
               selectedPaymentMethod={selectedPaymentMethod}
-              setSelectedPaymentMethod={setSelectedPaymentMethod}
+              handleStartCheckout={handleStartCheckout}
+              checkoutState={checkoutState}
+              setCheckoutState={setCheckoutState}
+              startCheckoutOrder={startCheckoutOrder}
               paymentOptions={paymentOptions}
               isPaymentOptionsLoading={isPaymentOptionsLoading}
+              isPaymentOptionsError={isPaymentOptionsError}
+              paymentOptionsError={paymentOptionsError}
+              isSwitchNetworkInProgress={isSwitchNetworkInProgress}
             />
-          ) : null}
-          <CartItems
-            selectedPaymentMethod={selectedPaymentMethod}
-            handleStartCheckout={handleStartCheckout}
-            checkoutState={checkoutState}
-            setCheckoutState={setCheckoutState}
-            startCheckoutOrder={startCheckoutOrder}
-            paymentOptions={paymentOptions}
-            isPaymentOptionsLoading={isPaymentOptionsLoading}
-            isPaymentOptionsError={isPaymentOptionsError}
-            paymentOptionsError={paymentOptionsError}
-            isSwitchNetworkInProgress={isSwitchNetworkInProgress}
-          />
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </ScrollArea>
   );
 };
