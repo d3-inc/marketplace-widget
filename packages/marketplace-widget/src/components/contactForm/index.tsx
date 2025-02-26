@@ -76,7 +76,11 @@ export function ContactForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} id="contact-form-container" className="px-3">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        id="contact-form-container"
+        className="px-3 flex flex-col flex-grow"
+      >
         <h5 className={cn('mb-2 text-sm font-semibold text-left')}>Contact Information</h5>
         <div className="space-y-3">
           <div className="flex gap-4 w-full">
