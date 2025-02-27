@@ -34,7 +34,7 @@ export const Search = () => {
       />
       <div
         id="search-results"
-        className={cn('flex flex-col flex-grow overflow-y-auto overflow-x-hidden gap-3 h-full')}
+        className={cn('flex flex-col flex-grow overflow-y-auto gap-3 h-full')}
       >
         <ScrollArea className={clsx('h-full')}>
           <div className="px-3">

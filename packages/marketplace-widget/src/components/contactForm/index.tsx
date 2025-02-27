@@ -77,16 +77,12 @@ export function ContactForm({
       console.error('Form submission error', error);
     }
   }
-  const isEmpty = React.Children.count(children) === 0;
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         id="contact-form-container"
-        className={clsx(
-          'flex flex-col flex-grow overflow-auto justify-between',
-          isEmpty ? 'pb-[130px]' : 'pb-[100px]',
-        )}
+        className={clsx('flex flex-col flex-grow overflow-auto justify-between')}
       >
         <ScrollArea
           className={clsx(
@@ -341,7 +337,7 @@ export function ContactForm({
             </div>
           </div>
         </ScrollArea>
-        <div className="px-3 flex-shrink-0 w-full absolute bottom-0 bg-white">
+        <div className="px-3 flex-shrink-0">
           {children}
           <Button
             disabled={isButtonDisabled}

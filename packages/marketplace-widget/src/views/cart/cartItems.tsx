@@ -76,13 +76,10 @@ export function CartItems({
       </div>
     );
   }
-  const isError = Boolean(
-    startCheckoutOrder.isError || checkoutState.isError || isPaymentOptionsError,
-  );
   return (
     <div
       id="cart-items-container"
-      className={cn('flex flex-col flex-grow gap-3 overflow-auto', isError ? ' pb-[7rem]' : 'pb-2')}
+      className={cn('flex flex-col flex-grow gap-3 overflow-auto pb-2')}
     >
       <ScrollArea
         className={clsx(
@@ -116,7 +113,7 @@ export function CartItems({
           </div>
         </div>
       </ScrollArea>
-      <div className="flex flex-col gap-2 mt-auto px-2 py-1 w-full absolute bottom-0 bg-white">
+      <div className="flex flex-col gap-2 mt-auto px-2 py-1">
         {startCheckoutOrder.isError || checkoutState.isError || isPaymentOptionsError ? (
           <CheckoutError
             checkoutState={checkoutState}

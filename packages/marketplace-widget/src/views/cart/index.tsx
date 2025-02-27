@@ -57,7 +57,7 @@ export const CartView = () => {
     );
   }
   return (
-    <div className="flex flex-col gap-y-2 flex-grow h-full">
+    <div className="flex flex-col flex-grow overflow-y-auto gap-3 h-full">
       <CartHeader handleBack={handleSearchView} />
       {contactInfo?.isFormOpen ? (
         <ContactForm
