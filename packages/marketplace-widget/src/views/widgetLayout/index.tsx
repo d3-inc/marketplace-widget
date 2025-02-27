@@ -34,7 +34,7 @@ const WidgetLayout = () => {
   return (
     <div
       className={
-        'flex flex-col w-[94svw] h-full max-h-[calc(100dvh-6rem)] md:max-h-[560px] max-w-[425px] bg-primary-foreground rounded-xl fixed bottom-[5rem] right-[16px] overflow-auto shadow-xl border dark:border-none dark:bg-[#0B0B23] dark:border-interactive-border overflow-hidden'
+        'flex flex-col w-[94svw] h-full max-h-[calc(100dvh-6rem)] md:h-[560px] md:max-h-[calc(75svh)] max-w-[425px] bg-primary-foreground rounded-xl fixed bottom-[5rem] right-[16px] overflow-auto shadow-xl border dark:border-none dark:bg-[#0B0B23] dark:border-interactive-border overflow-hidden'
       }
     >
       <div className="flex flex-col h-full">
