@@ -43,7 +43,6 @@ export const Search = () => {
         <ScrollArea
           className={clsx(
             'h-full',
-            // 'max-h-[-webkit-fill-available]',
             // isWalletIntegrationMode
             //   ? 'md:h-[calc(60dvh-200px)] h-[calc(90dvh-245px)]'
             //   : 'md:h-[calc(60dvh-130px)] h-[calc(90dvh-180px)]',

@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import clsx from 'clsx';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import type * as z from 'zod';
@@ -8,6 +9,7 @@ import type { ContactInfo, RegistrantContact } from '../../views/cart/hooks/type
 import { Button } from '../ui/button.js';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form.js';
 import { Input } from '../ui/input.js';
+import { ScrollArea } from '../ui/scrollArea.js';
 import { CountrySelector } from './countrySelector.js';
 import { contactFormSchema } from './schema.js';
 import { StateInput } from './stateInput.js';
@@ -27,6 +29,7 @@ const formDefaultValues = {
   phone: '',
 };
 type ContactFormProps = {
+  isWalletIntegrationMode: boolean;
   isButtonDisabled: boolean;
   setContactInfo: React.Dispatch<React.SetStateAction<ContactInfo>>;
   handleStartCheckout: (contact?: RegistrantContact) => Promise<void>;
@@ -35,6 +38,7 @@ type ContactFormProps = {
 };
 
 export function ContactForm({
+  isWalletIntegrationMode,
   isButtonDisabled,
   setContactInfo,
   handleStartCheckout,
@@ -79,253 +83,271 @@ export function ContactForm({
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         id="contact-form-container"
-        className="px-3 flex flex-col flex-grow"
+        className="flex flex-col flex-grow overflow-auto justify-between"
       >
-        <h5 className={cn('mb-2 text-sm font-semibold text-left')}>Contact Information</h5>
-        <div className="space-y-3">
-          <div className="flex gap-4 w-full">
-            <div className="flex-1 flex-grow items-start">
-              <FormField
-                control={form.control}
-                name="firstName"
-                render={({ field }) => (
-                  <FormItem className="space-y-1 flex flex-col items-start">
-                    <FormLabel>First Name</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="First Name"
-                        type="text"
-                        readOnly={isButtonDisabled}
-                        {...field}
-                      />
-                    </FormControl>
-
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <div className="flex-1 flex-grow items-start">
-              <FormField
-                control={form.control}
-                name="lastName"
-                render={({ field }) => (
-                  <FormItem className="space-y-1 flex flex-col items-start">
-                    <FormLabel>Last Name</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Enter Last Name"
-                        type="text"
-                        readOnly={isButtonDisabled}
-                        {...field}
-                      />
-                    </FormControl>
-
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-          </div>
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem className="space-y-1 flex flex-col items-start">
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter Email"
-                    type="text"
-                    readOnly={isButtonDisabled}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <div className="flex gap-4 w-full">
-            <div className="flex-[8] items-start">
-              <FormField
-                control={form.control}
-                name="phoneCountryCode"
-                render={({ field }) => (
-                  <FormItem className="space-y-1 flex flex-col items-start">
-                    <FormLabel>Country Code</FormLabel>
-                    <FormControl>
-                      <Input placeholder="+1" type="text" readOnly={isButtonDisabled} {...field} />
-                    </FormControl>
-                    <FormMessage className="text-start" />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <div className="flex-[12] items-start">
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem className="space-y-1 flex flex-col items-start">
-                    <FormLabel>Phone</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Enter Phone number"
-                        type="text"
-                        readOnly={isButtonDisabled}
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage className="text-start" />
-                  </FormItem>
-                )}
-              />
-            </div>
-          </div>
-          <div className="flex gap-4 w-full">
-            <div className="flex-1 flex-grow items-start">
-              <FormField
-                control={form.control}
-                name="country"
-                render={({ field }) => (
-                  <FormItem className="space-y-1">
-                    <div className="text-left">
-                      <FormLabel>Country</FormLabel>
-                    </div>
-                    <FormControl>
-                      <CountrySelector
-                        onCountryChange={(country) => {
-                          setSelectedCountry(country);
-                          form.setValue(field.name, country?.name || '');
-                          form.setValue('state', '');
-                        }}
-                        selectedCountry={selectedCountry}
-                      />
-                    </FormControl>
-                    <FormMessage className="text-start" />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <div className="flex-1 flex-grow items-start">
-              <FormField
-                control={form.control}
-                name="state"
-                render={({ field }) => (
-                  <FormItem className="space-y-1">
-                    <div className="text-left">
-                      <FormLabel>State</FormLabel>
-                    </div>
-                    <FormControl>
-                      <StateInput
-                        selectedState={selectedState}
-                        control={form.control}
-                        onStateChange={(state) => {
-                          setSelectedState(state);
-                          form.setValue(field.name, state?.stateCode || '');
-                        }}
-                        selectedCountry={selectedCountry}
-                      />
-                    </FormControl>
-                    <FormMessage className="text-start" />
-                  </FormItem>
-                )}
-              />
-            </div>
-          </div>
-          <FormField
-            control={form.control}
-            name="city"
-            render={({ field }) => (
-              <FormItem className="space-y-1 flex flex-col items-start">
-                <FormLabel>City</FormLabel>
-                <FormControl>
-                  <Input
-                    readOnly={isButtonDisabled}
-                    placeholder="Enter city"
-                    type="text"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="street"
-            render={({ field }) => (
-              <FormItem className="space-y-1 flex flex-col items-start">
-                <FormLabel>Street</FormLabel>
-                <FormControl>
-                  <Input
-                    readOnly={isButtonDisabled}
-                    placeholder="Enter street address"
-                    type="text"
-                    {...field}
-                  />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <div className="flex gap-4 w-full pb-2">
-            <div className="flex-1 flex-grow items-start">
-              <FormField
-                control={form.control}
-                name="postalCode"
-                render={({ field }) => (
-                  <FormItem className="space-y-1 flex flex-col items-start">
-                    <FormLabel>Zipcode</FormLabel>
-                    <FormControl>
-                      <Input
-                        readOnly={isButtonDisabled}
-                        placeholder="Enter Zipcode"
-                        type="text"
-                        {...field}
-                      />
-                    </FormControl>
-
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-
-            <div className="flex-1 flex-grow items-start">
-              <FormField
-                control={form.control}
-                name="organization"
-                render={({ field }) => (
-                  <FormItem className="space-y-1 flex flex-col items-start">
-                    <FormLabel>Organization</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Enter Organization"
-                        type="text"
-                        readOnly={isButtonDisabled}
-                        {...field}
-                      />
-                    </FormControl>
-
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-          </div>
-        </div>
-        {children}
-        <Button
-          disabled={isButtonDisabled}
-          type="submit"
-          className="rounded-xl w-full bg-[linear-gradient(95deg,_#5744e6_4.29%,_#8936ea_99.74%)] mt-auto mb-1 md:mt-1"
+        <ScrollArea
+          className={clsx(
+            'h-9/12 w-full',
+            isWalletIntegrationMode
+              ? 'max-h-[83dvh] md:max-h-[390px]'
+              : 'max-h-[83dvh] md:max-h-[425px]',
+          )}
         >
-          Buy Now
-        </Button>
+          <div className="px-3">
+            <h5 className={cn('mb-2 text-sm font-semibold text-left')}>Contact Information</h5>
+            <div className="space-y-3">
+              <div className="flex gap-4 w-full">
+                <div className="flex-1 flex-grow items-start">
+                  <FormField
+                    control={form.control}
+                    name="firstName"
+                    render={({ field }) => (
+                      <FormItem className="space-y-1 flex flex-col items-start">
+                        <FormLabel>First Name</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="First Name"
+                            type="text"
+                            readOnly={isButtonDisabled}
+                            {...field}
+                          />
+                        </FormControl>
+
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="flex-1 flex-grow items-start">
+                  <FormField
+                    control={form.control}
+                    name="lastName"
+                    render={({ field }) => (
+                      <FormItem className="space-y-1 flex flex-col items-start">
+                        <FormLabel>Last Name</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Enter Last Name"
+                            type="text"
+                            readOnly={isButtonDisabled}
+                            {...field}
+                          />
+                        </FormControl>
+
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </div>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem className="space-y-1 flex flex-col items-start">
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Enter Email"
+                        type="text"
+                        readOnly={isButtonDisabled}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className="flex gap-4 w-full">
+                <div className="flex-[8] items-start">
+                  <FormField
+                    control={form.control}
+                    name="phoneCountryCode"
+                    render={({ field }) => (
+                      <FormItem className="space-y-1 flex flex-col items-start">
+                        <FormLabel>Country Code</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="+1"
+                            type="text"
+                            readOnly={isButtonDisabled}
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage className="text-start" />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="flex-[12] items-start">
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem className="space-y-1 flex flex-col items-start">
+                        <FormLabel>Phone</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Enter Phone number"
+                            type="text"
+                            readOnly={isButtonDisabled}
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage className="text-start" />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </div>
+              <div className="flex gap-4 w-full">
+                <div className="flex-1 flex-grow items-start">
+                  <FormField
+                    control={form.control}
+                    name="country"
+                    render={({ field }) => (
+                      <FormItem className="space-y-1">
+                        <div className="text-left">
+                          <FormLabel>Country</FormLabel>
+                        </div>
+                        <FormControl>
+                          <CountrySelector
+                            onCountryChange={(country) => {
+                              setSelectedCountry(country);
+                              form.setValue(field.name, country?.name || '');
+                              form.setValue('state', '');
+                            }}
+                            selectedCountry={selectedCountry}
+                          />
+                        </FormControl>
+                        <FormMessage className="text-start" />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="flex-1 flex-grow items-start">
+                  <FormField
+                    control={form.control}
+                    name="state"
+                    render={({ field }) => (
+                      <FormItem className="space-y-1">
+                        <div className="text-left">
+                          <FormLabel>State</FormLabel>
+                        </div>
+                        <FormControl>
+                          <StateInput
+                            selectedState={selectedState}
+                            control={form.control}
+                            onStateChange={(state) => {
+                              setSelectedState(state);
+                              form.setValue(field.name, state?.stateCode || '');
+                            }}
+                            selectedCountry={selectedCountry}
+                          />
+                        </FormControl>
+                        <FormMessage className="text-start" />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </div>
+              <FormField
+                control={form.control}
+                name="city"
+                render={({ field }) => (
+                  <FormItem className="space-y-1 flex flex-col items-start">
+                    <FormLabel>City</FormLabel>
+                    <FormControl>
+                      <Input
+                        readOnly={isButtonDisabled}
+                        placeholder="Enter city"
+                        type="text"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="street"
+                render={({ field }) => (
+                  <FormItem className="space-y-1 flex flex-col items-start">
+                    <FormLabel>Street</FormLabel>
+                    <FormControl>
+                      <Input
+                        readOnly={isButtonDisabled}
+                        placeholder="Enter street address"
+                        type="text"
+                        {...field}
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <div className="flex gap-4 w-full pb-2">
+                <div className="flex-1 flex-grow items-start">
+                  <FormField
+                    control={form.control}
+                    name="postalCode"
+                    render={({ field }) => (
+                      <FormItem className="space-y-1 flex flex-col items-start">
+                        <FormLabel>Zipcode</FormLabel>
+                        <FormControl>
+                          <Input
+                            readOnly={isButtonDisabled}
+                            placeholder="Enter Zipcode"
+                            type="text"
+                            {...field}
+                          />
+                        </FormControl>
+
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <div className="flex-1 flex-grow items-start">
+                  <FormField
+                    control={form.control}
+                    name="organization"
+                    render={({ field }) => (
+                      <FormItem className="space-y-1 flex flex-col items-start">
+                        <FormLabel>Organization</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Enter Organization"
+                            type="text"
+                            readOnly={isButtonDisabled}
+                            {...field}
+                          />
+                        </FormControl>
+
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </div>
+            </div>
+            {children}
+          </div>
+        </ScrollArea>
+        <div className="px-3 flex-shrink-0">
+          <Button
+            disabled={isButtonDisabled}
+            type="submit"
+            className="rounded-xl w-full bg-[linear-gradient(95deg,_#5744e6_4.29%,_#8936ea_99.74%)] mt-auto mb-1 md:mt-1"
+          >
+            Buy Now
+          </Button>
+        </div>
       </form>
     </Form>
   );
