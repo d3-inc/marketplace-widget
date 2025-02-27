@@ -114,7 +114,7 @@ export function CartItems({
           </div>
         </div>
       </ScrollArea>
-      <div className="flex flex-col gap-2 mt-auto px-1">
+      <div className="flex flex-col gap-2 mt-auto px-2 py-1 w-full absolute bottom-0 bg-white">
         {startCheckoutOrder.isError || checkoutState.isError || isPaymentOptionsError ? (
           <CheckoutError
             checkoutState={checkoutState}
