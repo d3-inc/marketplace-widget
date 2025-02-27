@@ -90,7 +90,7 @@ export function ContactForm({
             'h-9/12 w-full',
             isWalletIntegrationMode
               ? 'max-h-[83dvh] md:max-h-[390px]'
-              : 'max-h-[83dvh] md:max-h-[425px]',
+              : 'max-h-[83dvh] md:max-h-[455px]',
           )}
         >
           <div className="px-3">
