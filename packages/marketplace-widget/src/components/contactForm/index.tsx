@@ -83,7 +83,7 @@ export function ContactForm({
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         id="contact-form-container"
-        className="flex flex-col flex-grow overflow-auto justify-between"
+        className="flex flex-col flex-grow overflow-auto justify-between pb-[110px]"
       >
         <ScrollArea
           className={clsx(
@@ -339,7 +339,7 @@ export function ContactForm({
             {children}
           </div>
         </ScrollArea>
-        <div className="px-3 flex-shrink-0">
+        <div className="px-3 flex-shrink-0 w-full absolute bottom-0 bg-white">
           <Button
             disabled={isButtonDisabled}
             type="submit"
