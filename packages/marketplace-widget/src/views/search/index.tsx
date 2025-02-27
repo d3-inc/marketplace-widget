@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import { useShallow } from 'zustand/react/shallow';
 import { ScrollArea } from '../../components/ui/scrollArea.js';
 import { useStore } from '../../state/store/index.js';
-import { WidgetIntegrationMode } from '../../types/widget.js';
 import { cn } from '../../utils/twMerge.js';
 import { CheckoutButton } from './checkoutButton.js';
 import { useSearch } from './hooks/useSearch.js';
@@ -25,9 +24,6 @@ export const Search = () => {
     recommendationRequestError,
   } = useSearch();
   const widgetConfig = useStore(useShallow((state) => state.widgetConfig));
-  const isWalletIntegrationMode = widgetConfig?.integrationMode
-    ? widgetConfig?.integrationMode === WidgetIntegrationMode.WALLET
-    : false;
 
   return (
     <div className="flex flex-col gap-y-2 relative main overflow-y-auto h-full">
@@ -40,14 +36,7 @@ export const Search = () => {
         id="search-results"
         className={cn('flex flex-col flex-grow overflow-y-auto overflow-x-hidden gap-3 h-full')}
       >
-        <ScrollArea
-          className={clsx(
-            'h-full',
-            // isWalletIntegrationMode
-            //   ? 'md:h-[calc(60dvh-200px)] h-[calc(90dvh-245px)]'
-            //   : 'md:h-[calc(60dvh-130px)] h-[calc(90dvh-180px)]',
-          )}
-        >
+        <ScrollArea className={clsx('h-full')}>
           <div className="px-3">
             <SearchResults
               searchResults={searchResults}
