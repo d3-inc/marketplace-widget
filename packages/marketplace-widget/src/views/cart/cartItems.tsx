@@ -76,7 +76,6 @@ export function CartItems({
       </div>
     );
   }
-
   return (
     <div
       id="cart-items-container"
@@ -87,7 +86,7 @@ export function CartItems({
           'h-9/12 w-full',
           isWalletIntegrationMode
             ? 'max-h-[62dvh] md:max-h-[315px]'
-            : 'max-h-[71dvh] md:max-h-[365px]',
+            : 'max-h-[71dvh] md:max-h-[385px]',
         )}
       >
         <div className="px-3">
@@ -114,7 +113,7 @@ export function CartItems({
           </div>
         </div>
       </ScrollArea>
-      <div className="flex flex-col gap-2 mt-auto px-1">
+      <div className="flex flex-col gap-2 mt-auto px-2 py-1">
         {startCheckoutOrder.isError || checkoutState.isError || isPaymentOptionsError ? (
           <CheckoutError
             checkoutState={checkoutState}
@@ -133,7 +132,7 @@ export function CartItems({
             isSwitchNetworkInProgress
           }
           className="rounded-xl bg-[linear-gradient(95deg,_#5744e6_4.29%,_#8936ea_99.74%)] mt-auto"
-          onClick={handleStartCheckout}
+          onClick={() => handleStartCheckout()}
         >
           {isSwitchNetworkInProgress ||
           startCheckoutOrder.isPending ||

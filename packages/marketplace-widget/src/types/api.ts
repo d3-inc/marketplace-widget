@@ -19,6 +19,11 @@ export type SearchResult = {
   nativeAmount: string;
   nativeCurrency: string;
   clickUrl: string;
+  eoi: boolean;
+  registryUsdPrice: string;
+  registryNativePrice: string;
+  registryFirstYearUsdPrice: string;
+  registryFirstYearNativePrice: string;
 };
 
 export type SearchResultRequestResponse = {

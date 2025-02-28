@@ -1,4 +1,4 @@
-import { createConfig, http } from 'wagmi';
+import { createConfig, fallback, http } from 'wagmi';
 import {
   arbitrum,
   arbitrumSepolia,
@@ -48,8 +48,10 @@ export const chainsList = [
 // Set up wagmi config
 export const getWagmiConfig = (config: WidgetConfig) => {
   const walletConnectKey = config?.config.walletConfig?.walletConnectKey ?? '';
+  const infuraApiKey = config?.config.walletConfig?.infuraApiKey ?? '';
+
   const defaultAppMeta = {
-    name: 'D3 Widget',
+    name: 'D3 Marketplace widget',
     description: 'Official Identity Service for Top web3 communities',
     url: window.location.origin,
     icons: ['https://d3.app/favicon.png'],
@@ -87,12 +89,18 @@ export const getWagmiConfig = (config: WidgetConfig) => {
     cacheTime: DEFAULT_POLLING_INTERVAL,
     pollingInterval: DEFAULT_POLLING_INTERVAL,
     transports: {
-      [mainnet.id]: http(),
+      [mainnet.id]: fallback([
+        http(`https://mainnet.infura.io/v3/${infuraApiKey}`),
+        http('https://cloudflare-eth.com/'),
+      ]),
       [coreMainnet.id]: http(),
       [shibariumMainnet.id]: http(),
       [victionMainnet.id]: http(),
       [polygon.id]: http(),
-      [sepolia.id]: http(),
+      [sepolia.id]: fallback([
+        http(`https://sepolia.infura.io/v3/${infuraApiKey}`),
+        http('https://rpc2.sepolia.org/'),
+      ]),
       [polygonMumbai.id]: http(),
       [victionTestnet.id]: http(),
       [shibariumTestnet.id]: http(),

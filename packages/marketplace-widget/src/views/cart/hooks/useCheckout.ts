@@ -12,11 +12,21 @@ import type {
   PaymentOption,
   PaymentOptionRequestResponse,
 } from '../../../types/api.js';
-import type { CheckoutState, StartCheckoutOrderPayload } from './types.js';
+import { getIsIcannDomain } from '../../../utils/nameTokens.js';
+import type {
+  CheckoutState,
+  ContactInfo,
+  RegistrantContact,
+  StartCheckoutOrderPayload,
+} from './types.js';
 
 export const useCheckout = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<PaymentOption | null>(null);
   const [isNetworkUpdated, setIsNetworkUpdated] = useState(false);
+  const [contactInfo, setContactInfo] = useState<ContactInfo>({
+    isFormOpen: false,
+    contact: null,
+  });
   const [checkoutState, setCheckoutState] = useState<CheckoutState>({
     feedback: '',
     isError: false,
@@ -87,6 +97,10 @@ export const useCheckout = () => {
         isTransactionInProgress: false,
         isOrderSuccess: true,
       });
+      setContactInfo((old) => ({
+        ...old,
+        isFormOpen: false,
+      }));
       resetCart();
     },
     [resetCart],
@@ -152,95 +166,114 @@ export const useCheckout = () => {
     ],
   );
 
-  const handleStartCheckout = useCallback(async () => {
-    if (!cart?.items?.length || !selectedPaymentMethod) {
-      const feedbackMessage = !selectedPaymentMethod
-        ? 'Please select a payment method before starting checkout.'
-        : 'Your cart is empty. Please add some items before starting checkout.';
-      setCheckoutState({
-        isError: true,
-        feedback: feedbackMessage,
-        isTransactionInProgress: false,
-        isOrderSuccess: false,
-      });
-      return;
-    }
+  const handleStartCheckout = useCallback(
+    async (contact?: RegistrantContact) => {
+      if (!cart?.items?.length || !selectedPaymentMethod) {
+        const feedbackMessage = !selectedPaymentMethod
+          ? 'Please select a payment method before starting checkout.'
+          : 'Your cart is empty. Please add some items before starting checkout.';
+        setCheckoutState({
+          isError: true,
+          feedback: feedbackMessage,
+          isTransactionInProgress: false,
+          isOrderSuccess: false,
+        });
+        return;
+      }
 
-    const isWalletConnected = isConnectWalletIntegrationMode
-      ? Boolean(connectWallet.evmWallet)
-      : Boolean(widgetConfig.walletAddress) && widgetConfig.onPurchaseInit;
-    const walletAddress = isConnectWalletIntegrationMode
-      ? connectWallet.evmWallet
-      : widgetConfig.walletAddress;
+      const isWalletConnected = isConnectWalletIntegrationMode
+        ? Boolean(connectWallet.evmWallet)
+        : Boolean(widgetConfig.walletAddress) && widgetConfig.onPurchaseInit;
+      const walletAddress = isConnectWalletIntegrationMode
+        ? connectWallet.evmWallet
+        : widgetConfig.walletAddress;
 
-    if (!isWalletConnected) {
-      setCheckoutState({
-        isError: true,
-        feedback: 'Please connect wallet to continue with purchase',
-        isTransactionInProgress: false,
-        isOrderSuccess: false,
-      });
-      return;
-    }
+      if (!isWalletConnected) {
+        setCheckoutState({
+          isError: true,
+          feedback: 'Please connect a wallet to continue with purchase',
+          isTransactionInProgress: false,
+          isOrderSuccess: false,
+        });
+        return;
+      }
 
-    if (isConnectWalletIntegrationMode) {
-      const isCorrectChain = await ensureCorrectEVMChain(Number(selectedPaymentMethod.chainId));
-      if (!isCorrectChain) return;
-    }
-    if (!startCheckoutOrder.isPending && walletAddress) {
-      // Reset the checkout state to initial state
-      setCheckoutState({
-        isError: false,
-        feedback: '',
-        isTransactionInProgress: false,
-        isOrderSuccess: false,
-      });
-      const orderItems = cart.items.map((cartItem) => ({
-        sld: cartItem.sld,
-        tld: cartItem.tld,
-        autoRenew: false,
-        domainLength: 1,
-      }));
-      const payload = {
-        paymentOptions: {
-          contractAddress: selectedPaymentMethod.contractAddress,
-          tokenAddress: selectedPaymentMethod.tokenAddress,
-          buyerAddress: walletAddress,
-        },
-        names: orderItems,
-      };
-      startCheckoutOrder.mutate(payload, {
-        onSuccess: async (response) => {
-          if (isConnectWalletIntegrationMode) {
-            handleCryptoCheckoutCallback(response);
-            return;
-          }
-          await handlePurchaseCallback(response);
-        },
-        onError: (error) => {
-          // eslint-disable-next-line
-          console.log({ error });
-          setCheckoutState((old) => ({
-            ...old,
-            isTransactionInProgress: false,
-            isOrderSuccess: false,
-            feedback: error.message,
-            isError: true,
-          }));
-        },
-      });
-    }
-  }, [
-    startCheckoutOrder,
-    handlePurchaseCallback,
-    cart?.items,
-    selectedPaymentMethod,
-    widgetConfig,
-    handleCryptoCheckoutCallback,
-    connectWallet.evmWallet,
-    ensureCorrectEVMChain,
-    isConnectWalletIntegrationMode,
-  ]);
+      if (isConnectWalletIntegrationMode) {
+        const isCorrectChain = await ensureCorrectEVMChain(Number(selectedPaymentMethod.chainId));
+        if (!isCorrectChain) return;
+      }
+      const registrantContact = contactInfo?.contact ? contactInfo?.contact : contact;
+      const isOrderContainsICannDomain = cart?.items?.some((domain) => getIsIcannDomain(domain));
+      if (isOrderContainsICannDomain && !registrantContact) {
+        setContactInfo((old) => ({ ...old, isFormOpen: true }));
+        return;
+      }
+      if (!startCheckoutOrder.isPending && walletAddress) {
+        // Reset the checkout state to initial state
+        setCheckoutState({
+          isError: false,
+          feedback: '',
+          isTransactionInProgress: false,
+          isOrderSuccess: false,
+        });
+        const orderItems = cart.items.map((cartItem) => ({
+          sld: cartItem.sld,
+          tld: cartItem.tld,
+          autoRenew: false,
+          domainLength: 1,
+        }));
+        const payload = {
+          paymentOptions: {
+            contractAddress: selectedPaymentMethod.contractAddress,
+            tokenAddress: selectedPaymentMethod.tokenAddress,
+            buyerAddress: walletAddress,
+          },
+          names: orderItems,
+          ...(registrantContact && { registrantContact }),
+        };
+        startCheckoutOrder.mutate(payload, {
+          onSuccess: async (response) => {
+            setContactInfo((old) => ({ ...old, isFormOpen: false }));
+            if (isConnectWalletIntegrationMode) {
+              handleCryptoCheckoutCallback(response);
+              return;
+            }
+            await handlePurchaseCallback(response);
+          },
+          onError: (error) => {
+            // eslint-disable-next-line
+            console.log({ error });
+            const errorMessage = error?.message ?? '';
+            setCheckoutState((old) => ({
+              ...old,
+              isTransactionInProgress: false,
+              isOrderSuccess: false,
+              feedback: errorMessage,
+              isError: true,
+            }));
+            if (String(errorMessage)?.toLowerCase()?.includes('registrant contact is required')) {
+              setContactInfo((old) => ({
+                ...old,
+                isFormOpen: true,
+              }));
+            }
+          },
+        });
+      }
+    },
+    [
+      startCheckoutOrder,
+      handlePurchaseCallback,
+      cart?.items,
+      selectedPaymentMethod,
+      widgetConfig,
+      handleCryptoCheckoutCallback,
+      connectWallet.evmWallet,
+      ensureCorrectEVMChain,
+      isConnectWalletIntegrationMode,
+      contactInfo?.contact,
+    ],
+  );
 
   useEffect(() => {
     if (isNetworkUpdated && evmWalletAddress && walletClient && isConnectWalletIntegrationMode) {
@@ -255,6 +288,12 @@ export const useCheckout = () => {
     isConnectWalletIntegrationMode,
   ]);
 
+  useEffect(() => {
+    if (contactInfo?.contact && !connectWallet?.evmWallet) {
+      setContactInfo((old) => ({ ...old, contact: null }));
+    }
+  }, [connectWallet?.evmWallet, contactInfo?.contact]);
+
   return {
     selectedPaymentMethod,
     setSelectedPaymentMethod,
@@ -268,5 +307,7 @@ export const useCheckout = () => {
     paymentOptionsError,
     isSwitchNetworkInProgress,
     switchNetworkError,
+    contactInfo,
+    setContactInfo,
   };
 };

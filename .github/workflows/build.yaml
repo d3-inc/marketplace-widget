@@ -26,6 +26,7 @@ jobs:
       - name: Install dependencies and build
         run: |
           yarn install
+          yarn lint
           yarn build:widget
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

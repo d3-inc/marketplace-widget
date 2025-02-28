@@ -1,0 +1,332 @@
+[
+  {
+    "id": 1456,
+    "name": "Alabama",
+    "stateCode": "AL"
+  },
+  {
+    "id": 1400,
+    "name": "Alaska",
+    "stateCode": "AK"
+  },
+  {
+    "id": 1424,
+    "name": "American Samoa",
+    "stateCode": "AS"
+  },
+  {
+    "id": 1434,
+    "name": "Arizona",
+    "stateCode": "AZ"
+  },
+  {
+    "id": 1444,
+    "name": "Arkansas",
+    "stateCode": "AR"
+  },
+  {
+    "id": 1402,
+    "name": "Baker Island",
+    "stateCode": "UM-81"
+  },
+  {
+    "id": 1416,
+    "name": "California",
+    "stateCode": "CA"
+  },
+  {
+    "id": 1450,
+    "name": "Colorado",
+    "stateCode": "CO"
+  },
+  {
+    "id": 1435,
+    "name": "Connecticut",
+    "stateCode": "CT"
+  },
+  {
+    "id": 1399,
+    "name": "Delaware",
+    "stateCode": "DE"
+  },
+  {
+    "id": 1437,
+    "name": "District of Columbia",
+    "stateCode": "DC"
+  },
+  {
+    "id": 1436,
+    "name": "Florida",
+    "stateCode": "FL"
+  },
+  {
+    "id": 1455,
+    "name": "Georgia",
+    "stateCode": "GA"
+  },
+  {
+    "id": 1412,
+    "name": "Guam",
+    "stateCode": "GU"
+  },
+  {
+    "id": 1411,
+    "name": "Hawaii",
+    "stateCode": "HI"
+  },
+  {
+    "id": 1398,
+    "name": "Howland Island",
+    "stateCode": "UM-84"
+  },
+  {
+    "id": 1460,
+    "name": "Idaho",
+    "stateCode": "ID"
+  },
+  {
+    "id": 1425,
+    "name": "Illinois",
+    "stateCode": "IL"
+  },
+  {
+    "id": 1440,
+    "name": "Indiana",
+    "stateCode": "IN"
+  },
+  {
+    "id": 1459,
+    "name": "Iowa",
+    "stateCode": "IA"
+  },
+  {
+    "id": 1410,
+    "name": "Jarvis Island",
+    "stateCode": "UM-86"
+  },
+  {
+    "id": 1428,
+    "name": "Johnston Atoll",
+    "stateCode": "UM-67"
+  },
+  {
+    "id": 1406,
+    "name": "Kansas",
+    "stateCode": "KS"
+  },
+  {
+    "id": 1419,
+    "name": "Kentucky",
+    "stateCode": "KY"
+  },
+  {
+    "id": 1403,
+    "name": "Kingman Reef",
+    "stateCode": "UM-89"
+  },
+  {
+    "id": 1457,
+    "name": "Louisiana",
+    "stateCode": "LA"
+  },
+  {
+    "id": 1453,
+    "name": "Maine",
+    "stateCode": "ME"
+  },
+  {
+    "id": 1401,
+    "name": "Maryland",
+    "stateCode": "MD"
+  },
+  {
+    "id": 1433,
+    "name": "Massachusetts",
+    "stateCode": "MA"
+  },
+  {
+    "id": 1426,
+    "name": "Michigan",
+    "stateCode": "MI"
+  },
+  {
+    "id": 1438,
+    "name": "Midway Atoll",
+    "stateCode": "UM-71"
+  },
+  {
+    "id": 1420,
+    "name": "Minnesota",
+    "stateCode": "MN"
+  },
+  {
+    "id": 1430,
+    "name": "Mississippi",
+    "stateCode": "MS"
+  },
+  {
+    "id": 1451,
+    "name": "Missouri",
+    "stateCode": "MO"
+  },
+  {
+    "id": 1446,
+    "name": "Montana",
+    "stateCode": "MT"
+  },
+  {
+    "id": 1439,
+    "name": "Navassa Island",
+    "stateCode": "UM-76"
+  },
+  {
+    "id": 1408,
+    "name": "Nebraska",
+    "stateCode": "NE"
+  },
+  {
+    "id": 1458,
+    "name": "Nevada",
+    "stateCode": "NV"
+  },
+  {
+    "id": 1404,
+    "name": "New Hampshire",
+    "stateCode": "NH"
+  },
+  {
+    "id": 1417,
+    "name": "New Jersey",
+    "stateCode": "NJ"
+  },
+  {
+    "id": 1423,
+    "name": "New Mexico",
+    "stateCode": "NM"
+  },
+  {
+    "id": 1452,
+    "name": "New York",
+    "stateCode": "NY"
+  },
+  {
+    "id": 1447,
+    "name": "North Carolina",
+    "stateCode": "NC"
+  },
+  {
+    "id": 1418,
+    "name": "North Dakota",
+    "stateCode": "ND"
+  },
+  {
+    "id": 1431,
+    "name": "Northern Mariana Islands",
+    "stateCode": "MP"
+  },
+  {
+    "id": 4851,
+    "name": "Ohio",
+    "stateCode": "OH"
+  },
+  {
+    "id": 1421,
+    "name": "Oklahoma",
+    "stateCode": "OK"
+  },
+  {
+    "id": 1415,
+    "name": "Oregon",
+    "stateCode": "OR"
+  },
+  {
+    "id": 1448,
+    "name": "Palmyra Atoll",
+    "stateCode": "UM-95"
+  },
+  {
+    "id": 1422,
+    "name": "Pennsylvania",
+    "stateCode": "PA"
+  },
+  {
+    "id": 1449,
+    "name": "Puerto Rico",
+    "stateCode": "PR"
+  },
+  {
+    "id": 1461,
+    "name": "Rhode Island",
+    "stateCode": "RI"
+  },
+  {
+    "id": 1443,
+    "name": "South Carolina",
+    "stateCode": "SC"
+  },
+  {
+    "id": 1445,
+    "name": "South Dakota",
+    "stateCode": "SD"
+  },
+  {
+    "id": 1454,
+    "name": "Tennessee",
+    "stateCode": "TN"
+  },
+  {
+    "id": 1407,
+    "name": "Texas",
+    "stateCode": "TX"
+  },
+  {
+    "id": 1432,
+    "name": "United States Minor Outlying Islands",
+    "stateCode": "UM"
+  },
+  {
+    "id": 1413,
+    "name": "United States Virgin Islands",
+    "stateCode": "VI"
+  },
+  {
+    "id": 1414,
+    "name": "Utah",
+    "stateCode": "UT"
+  },
+  {
+    "id": 1409,
+    "name": "Vermont",
+    "stateCode": "VT"
+  },
+  {
+    "id": 1427,
+    "name": "Virginia",
+    "stateCode": "VA"
+  },
+  {
+    "id": 1405,
+    "name": "Wake Island",
+    "stateCode": "UM-79"
+  },
+  {
+    "id": 1462,
+    "name": "Washington",
+    "stateCode": "WA"
+  },
+  {
+    "id": 1429,
+    "name": "West Virginia",
+    "stateCode": "WV"
+  },
+  {
+    "id": 1441,
+    "name": "Wisconsin",
+    "stateCode": "WI"
+  },
+  {
+    "id": 1442,
+    "name": "Wyoming",
+    "stateCode": "WY"
+  }
+]

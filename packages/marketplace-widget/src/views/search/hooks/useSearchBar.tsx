@@ -1,5 +1,5 @@
 import type React from 'react';
-import { useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 type UseSearchBarProps = {
   initialSearch?: string;
@@ -13,7 +13,7 @@ export function useSearchBar({
   handleSubmit,
 }: UseSearchBarProps) {
   const searchInputRef = useRef<HTMLInputElement | null>(null);
-
+  const initialRenderRef = useRef(true);
   const [searchValue, setSearchValue] = useState(initialSearch);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -21,7 +21,7 @@ export function useSearchBar({
     if (event.key === 'Enter' && searchValue?.length && !isSearchDisabled) {
       event.preventDefault();
       event.stopPropagation();
-      handleSearchAction();
+      handleSearchAction(searchValue);
     }
   };
 
@@ -30,18 +30,28 @@ export function useSearchBar({
     setSearchValue(enteredText);
   };
 
-  const handleSearchAction = () => {
-    if (searchValue?.startsWith('-') || searchValue?.endsWith('-')) {
-      setErrorMessage('Name cannot start or end with "-"');
-      return;
+  const handleSearchAction = useCallback(
+    (search?: string) => {
+      if (search?.startsWith('-') || search?.endsWith('-')) {
+        setErrorMessage('Name cannot start or end with "-"');
+        return;
+      }
+      if (search?.length) {
+        const trimmedSld = search.replace(/\s+/g, '').split(/[.*]/)[0];
+        setErrorMessage(null);
+        handleSubmit(trimmedSld);
+        setSearchValue(trimmedSld);
+      }
+    },
+    [handleSubmit],
+  );
+
+  useEffect(() => {
+    if (initialRenderRef.current && initialSearch?.length) {
+      initialRenderRef.current = false;
+      handleSearchAction(initialSearch);
     }
-    if (searchValue?.length) {
-      const trimmedSld = searchValue.replace(/\s+/g, '').split(/[.*]/)[0];
-      setErrorMessage(null);
-      handleSubmit(trimmedSld);
-      setSearchValue(trimmedSld);
-    }
-  };
+  }, [initialSearch, handleSearchAction]);
 
   return {
     searchValue,

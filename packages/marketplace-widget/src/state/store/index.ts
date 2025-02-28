@@ -21,6 +21,7 @@ const createStore = combine(
           isOrderSuccess: newState.isOrderSuccess ?? prevState?.widgetSettings?.isOrderSuccess,
           isWalletModalOpen:
             newState.isWalletModalOpen ?? prevState?.widgetSettings?.isWalletModalOpen,
+          lastSearch: newState.lastSearch ?? prevState?.widgetSettings?.lastSearch,
         },
       })),
     setWidgetConfig: (newState: WidgetConfig) =>
@@ -65,9 +66,10 @@ const createStore = combine(
         cart: { ...initialCart },
       }),
     resetState: () =>
-      set({
+      set((prevState) => ({
         connectWallet: { ...connectWallet },
-      }),
+        widgetSettings: { ...prevState.widgetSettings, lastSearch: '' },
+      })),
   }),
 );
 export const useStore = isProductionEnv ? create(createStore) : create(devtools(createStore));

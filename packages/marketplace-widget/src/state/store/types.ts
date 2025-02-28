@@ -5,6 +5,7 @@ export type WidgetSettings = {
   isCartViewOpen?: boolean;
   isOrderSuccess?: false;
   isWalletModalOpen?: false;
+  lastSearch?: string;
 };
 
 export type WidgetConfig = {

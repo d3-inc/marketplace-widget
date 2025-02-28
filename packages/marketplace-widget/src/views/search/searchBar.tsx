@@ -26,9 +26,10 @@ export function SearchBar({
 
   return (
     <form
+      className="flex-shrink-0"
       onSubmit={(e) => {
         e.preventDefault();
-        handleSearchAction();
+        handleSearchAction(searchValue);
       }}
     >
       <div className="flex gap-2 my-2 px-3">
@@ -49,7 +50,6 @@ export function SearchBar({
             autoCorrect="false"
             autoComplete="false"
             autoCapitalize="false"
-            data-testid="search-field"
             maxLength={63}
             minLength={1}
             aria-invalid={!!errorMessage}
