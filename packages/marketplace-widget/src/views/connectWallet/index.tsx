@@ -13,7 +13,7 @@ export function ConnectWallet({ isButtonDisabled }: ConnectWalletProps) {
   const { address } = useEvmConnectWallet();
 
   return (
-    <>
+    <div className="flex-shrink-0">
       <>
         {!connectWallet.evmWallet ? (
           <ConnectWalletModal isButtonDisabled={isButtonDisabled} />
@@ -22,6 +22,6 @@ export function ConnectWallet({ isButtonDisabled }: ConnectWalletProps) {
         )}
       </>
       <div className="my-1 w-100 mx-3 border-b"></div>
-    </>
+    </div>
   );
 }

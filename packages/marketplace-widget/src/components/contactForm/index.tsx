@@ -77,27 +77,24 @@ export function ContactForm({
       console.error('Form submission error', error);
     }
   }
-
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         id="contact-form-container"
-        className="flex flex-col w-full h-full flex-grow"
+        className={clsx('flex flex-col flex-grow overflow-auto justify-between')}
       >
-        <div className="mb-2 px-3">
-          <h5 className={cn('text-sm font-semibold text-left')}>Contact Information</h5>
-        </div>
-        <div className={cn('flex flex-col flex-grow gap-3 overflow-hidden')}>
-          <ScrollArea
-            className={clsx(
-              'h-9/12 w-full',
-              isWalletIntegrationMode
-                ? 'max-h-[83dvh] md:max-h-[360px]'
-                : 'max-h-[83dvh] md:max-h-[425px]',
-            )}
-          >
-            <div className="space-y-3 px-3">
+        <ScrollArea
+          className={clsx(
+            'h-9/12 w-full',
+            isWalletIntegrationMode
+              ? 'max-h-[83dvh] md:max-h-[390px]'
+              : 'max-h-[83dvh] md:max-h-[455px]',
+          )}
+        >
+          <div className="px-3">
+            <h5 className={cn('mb-2 text-sm font-semibold text-left')}>Contact Information</h5>
+            <div className="space-y-3">
               <div className="flex gap-4 w-full">
                 <div className="flex-1 flex-grow items-start">
                   <FormField
@@ -338,10 +335,10 @@ export function ContactForm({
                 </div>
               </div>
             </div>
-          </ScrollArea>
-        </div>
-        {children}
-        <div className="px-3">
+          </div>
+        </ScrollArea>
+        <div className="px-3 flex-shrink-0">
+          {children}
           <Button
             disabled={isButtonDisabled}
             type="submit"

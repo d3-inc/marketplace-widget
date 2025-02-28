@@ -31,16 +31,17 @@ const WidgetLayout = () => {
   }
   const isWalletIntegrationMode =
     !widgetConfig.onPurchaseInit && !widgetConfig?.walletAddress?.length;
-
   return (
     <div
       className={
-        'flex flex-col w-[94svw] h-[90dvh] md:h-[560px] max-h:[90dvh] md:max-h-[75svh] max-w-[425px] bg-primary-foreground rounded-xl absolute bottom-16 right-0 overflow-auto shadow-xl border dark:border-none dark:bg-[#0B0B23] dark:border-interactive-border'
+        'flex flex-col w-[94svw] h-full max-h-[calc(100dvh-6rem)] md:h-[560px] md:max-h-[calc(75svh)] max-w-[425px] bg-primary-foreground rounded-xl fixed bottom-[5rem] right-[16px] overflow-auto shadow-xl border dark:border-none dark:bg-[#0B0B23] dark:border-interactive-border overflow-hidden'
       }
     >
-      {isWalletIntegrationMode ? <ConnectWallet /> : null}
-      {widgetSettings.isCartViewOpen ? <CartView /> : <Search />}
-      <Toaster />
+      <div className="flex flex-col h-full">
+        {isWalletIntegrationMode ? <ConnectWallet /> : null}
+        {widgetSettings.isCartViewOpen ? <CartView /> : <Search />}
+        <Toaster />
+      </div>
     </div>
   );
 };

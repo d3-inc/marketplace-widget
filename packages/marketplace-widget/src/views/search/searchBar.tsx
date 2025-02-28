@@ -26,6 +26,7 @@ export function SearchBar({
 
   return (
     <form
+      className="flex-shrink-0"
       onSubmit={(e) => {
         e.preventDefault();
         handleSearchAction();
