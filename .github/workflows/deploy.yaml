@@ -27,6 +27,7 @@ jobs:
         run: yarn build:app
         env:
           VITE_D3_API_KEY: ${{ secrets.VITE_D3_API_KEY }}
+          VITE_API_ENDPOINT: https://api-public-testnet.d3.app/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
