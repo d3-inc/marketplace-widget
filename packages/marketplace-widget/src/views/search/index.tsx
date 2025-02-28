@@ -24,13 +24,14 @@ export const Search = () => {
     recommendationRequestError,
   } = useSearch();
   const widgetConfig = useStore(useShallow((state) => state.widgetConfig));
+  const widgetSettings = useStore(useShallow((state) => state.widgetSettings));
 
   return (
     <div className="flex flex-col gap-y-2 relative main overflow-y-auto h-full">
       <SearchBar
         isSearchDisabled={isLoading}
         handleSearchSubmit={handleSearchSubmit}
-        initialSearch={searchQueryParams.sld}
+        initialSearch={widgetSettings.lastSearch ?? ''}
       />
       <div
         id="search-results"

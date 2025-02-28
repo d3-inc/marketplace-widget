@@ -30,7 +30,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "lint": "eslint --ext .tsx --ext .ts --ext .jsx --ext .js ./src",
     "format": "prettier --write ./src/",
     "watch:tsc": "tsc -w -p ./tsconfig.json",
     "watch:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",

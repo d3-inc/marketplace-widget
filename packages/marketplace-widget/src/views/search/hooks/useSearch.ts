@@ -85,7 +85,7 @@ export const useSearch = () => {
 
   const handleSearchSubmit = (sld: string) => {
     const tld = getPartnerTld(widgetConfig.tlds);
-
+    setWidgetSettings({ lastSearch: sld });
     setSearchQueryParams((old) => ({
       ...old,
       sld,
