@@ -8,7 +8,7 @@ const infuraKey = import.meta.env.VITE_INFURA_KEY;
 
 export const wagmiConfig = getDefaultConfig({
   appName: 'D3 Marketplace widget app',
-  projectId: walletConnectKey,
+  projectId: walletConnectKey ?? 'PROJECT_ID',
   chains: [
     mainnet,
     polygon,
