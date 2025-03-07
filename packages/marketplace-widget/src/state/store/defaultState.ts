@@ -4,6 +4,7 @@ export const widgetSettings: WidgetSettings = {
   isCartViewOpen: false,
   isOrderSuccess: false,
   isWalletModalOpen: false,
+  lastSearch: '',
 };
 
 export const initialCart: Cart = {

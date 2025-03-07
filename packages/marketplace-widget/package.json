@@ -30,7 +30,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "lint": "eslint --ext .tsx --ext .ts --ext .jsx --ext .js ./src",
     "format": "prettier --write ./src/",
     "watch:tsc": "tsc -w -p ./tsconfig.json",
     "watch:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
@@ -60,8 +59,8 @@
     "lucide-react": "^0.469.0",
     "react-hook-form": "^7.54.2",
     "tailwind-merge": "^2.6.0",
-    "viem": "^2.21.15",
-    "wagmi": "^2.12.14",
+    "viem": "^2.23.5",
+    "wagmi": "^2.14.12",
     "zod": "^3.24.1"
   },
   "peerDependencies": {
