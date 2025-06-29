@@ -1,5 +1,4 @@
-// eslint-disable-next-line camelcase
-import { createConfig, fallback, http, unstable_connector } from 'wagmi';
+import { createConfig, fallback, http, unstable_connector as unstableConnector } from 'wagmi';
 import {
   arbitrum,
   arbitrumSepolia,
@@ -89,30 +88,30 @@ export const getWagmiConfig = (config: WidgetConfig) => {
     pollingInterval: DEFAULT_POLLING_INTERVAL,
     transports: {
       [mainnet.id]: fallback([
-        unstable_connector(injected),
+        unstableConnector(injected),
         http('https://cloudflare-eth.com/'),
         http(),
       ]),
-      [coreMainnet.id]: fallback([unstable_connector(injected), http()]),
-      [shibariumMainnet.id]: fallback([unstable_connector(injected), http()]),
-      [victionMainnet.id]: fallback([unstable_connector(injected), http()]),
+      [coreMainnet.id]: fallback([unstableConnector(injected), http()]),
+      [shibariumMainnet.id]: fallback([unstableConnector(injected), http()]),
+      [victionMainnet.id]: fallback([unstableConnector(injected), http()]),
       [polygon.id]: http(),
       [sepolia.id]: fallback([
-        unstable_connector(injected),
+        unstableConnector(injected),
         http('https://ethereum-sepolia-rpc.publicnode.com'),
         http(),
       ]),
-      [polygonMumbai.id]: fallback([unstable_connector(injected), http()]),
-      [victionTestnet.id]: fallback([unstable_connector(injected), http()]),
-      [shibariumTestnet.id]: fallback([unstable_connector(injected), http()]),
-      [coreTestnet.id]: fallback([unstable_connector(injected), http()]),
-      [arbitrum.id]: fallback([unstable_connector(injected), http()]),
-      [arbitrumSepolia.id]: fallback([unstable_connector(injected), http()]),
-      [polygonAmoy.id]: fallback([unstable_connector(injected), http()]),
-      [apechainMainnet.id]: fallback([unstable_connector(injected), http()]),
-      [apechainTestnet.id]: fallback([unstable_connector(injected), http()]),
-      [base.id]: fallback([unstable_connector(injected), http()]),
-      [baseSepolia.id]: fallback([unstable_connector(injected), http()]),
+      [polygonMumbai.id]: fallback([unstableConnector(injected), http()]),
+      [victionTestnet.id]: fallback([unstableConnector(injected), http()]),
+      [shibariumTestnet.id]: fallback([unstableConnector(injected), http()]),
+      [coreTestnet.id]: fallback([unstableConnector(injected), http()]),
+      [arbitrum.id]: fallback([unstableConnector(injected), http()]),
+      [arbitrumSepolia.id]: fallback([unstableConnector(injected), http()]),
+      [polygonAmoy.id]: fallback([unstableConnector(injected), http()]),
+      [apechainMainnet.id]: fallback([unstableConnector(injected), http()]),
+      [apechainTestnet.id]: fallback([unstableConnector(injected), http()]),
+      [base.id]: fallback([unstableConnector(injected), http()]),
+      [baseSepolia.id]: fallback([unstableConnector(injected), http()]),
     },
   });
 };
