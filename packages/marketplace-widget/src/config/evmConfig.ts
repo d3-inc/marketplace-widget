@@ -1,4 +1,5 @@
-import { createConfig, http } from 'wagmi';
+// eslint-disable-next-line camelcase
+import { createConfig, fallback, http, unstable_connector } from 'wagmi';
 import {
   arbitrum,
   arbitrumSepolia,
@@ -87,23 +88,31 @@ export const getWagmiConfig = (config: WidgetConfig) => {
     cacheTime: DEFAULT_POLLING_INTERVAL,
     pollingInterval: DEFAULT_POLLING_INTERVAL,
     transports: {
-      [mainnet.id]: http(),
-      [coreMainnet.id]: http(),
-      [shibariumMainnet.id]: http(),
-      [victionMainnet.id]: http(),
+      [mainnet.id]: fallback([
+        unstable_connector(injected),
+        http('https://cloudflare-eth.com/'),
+        http(),
+      ]),
+      [coreMainnet.id]: fallback([unstable_connector(injected), http()]),
+      [shibariumMainnet.id]: fallback([unstable_connector(injected), http()]),
+      [victionMainnet.id]: fallback([unstable_connector(injected), http()]),
       [polygon.id]: http(),
-      [sepolia.id]: http(),
-      [polygonMumbai.id]: http(),
-      [victionTestnet.id]: http(),
-      [shibariumTestnet.id]: http(),
-      [coreTestnet.id]: http(),
-      [arbitrum.id]: http(),
-      [arbitrumSepolia.id]: http(),
-      [polygonAmoy.id]: http(),
-      [apechainMainnet.id]: http(),
-      [apechainTestnet.id]: http(),
-      [base.id]: http(),
-      [baseSepolia.id]: http(),
+      [sepolia.id]: fallback([
+        unstable_connector(injected),
+        http('https://ethereum-sepolia-rpc.publicnode.com'),
+        http(),
+      ]),
+      [polygonMumbai.id]: fallback([unstable_connector(injected), http()]),
+      [victionTestnet.id]: fallback([unstable_connector(injected), http()]),
+      [shibariumTestnet.id]: fallback([unstable_connector(injected), http()]),
+      [coreTestnet.id]: fallback([unstable_connector(injected), http()]),
+      [arbitrum.id]: fallback([unstable_connector(injected), http()]),
+      [arbitrumSepolia.id]: fallback([unstable_connector(injected), http()]),
+      [polygonAmoy.id]: fallback([unstable_connector(injected), http()]),
+      [apechainMainnet.id]: fallback([unstable_connector(injected), http()]),
+      [apechainTestnet.id]: fallback([unstable_connector(injected), http()]),
+      [base.id]: fallback([unstable_connector(injected), http()]),
+      [baseSepolia.id]: fallback([unstable_connector(injected), http()]),
     },
   });
 };
