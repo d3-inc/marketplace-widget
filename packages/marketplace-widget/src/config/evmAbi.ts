@@ -149,7 +149,7 @@ export const mintManagerAbi = [
       {
         indexed: false,
         internalType: 'bool',
-        name: 'secondarySale',
+        name: 'immediateMint',
         type: 'bool',
       },
     ],
@@ -168,6 +168,45 @@ export const mintManagerAbi = [
     ],
     name: 'Upgraded',
     type: 'event',
+  },
+  {
+    inputs: [],
+    name: '_secondaryFee',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: '_signer',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: '_treasury',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
   },
   {
     inputs: [],
@@ -213,45 +252,6 @@ export const mintManagerAbi = [
     type: 'function',
   },
   {
-    inputs: [],
-    name: 'getSecondarySaleFee',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'getSigner',
-    outputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'getTreasury',
-    outputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
     inputs: [
       {
         internalType: 'address',
@@ -265,13 +265,6 @@ export const mintManagerAbi = [
       },
     ],
     name: 'initialize',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'initializeV2',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -342,6 +335,43 @@ export const mintManagerAbi = [
             name: 'orderId',
             type: 'string',
           },
+          {
+            components: [
+              {
+                internalType: 'contract Registry',
+                name: 'registry',
+                type: 'address',
+              },
+              {
+                internalType: 'string',
+                name: 'label',
+                type: 'string',
+              },
+              {
+                internalType: 'string',
+                name: 'tld',
+                type: 'string',
+              },
+              {
+                internalType: 'uint256',
+                name: 'expirationTime',
+                type: 'uint256',
+              },
+              {
+                internalType: 'address',
+                name: 'owner',
+                type: 'address',
+              },
+              {
+                internalType: 'bool',
+                name: 'renewal',
+                type: 'bool',
+              },
+            ],
+            internalType: 'struct Marketplace.NameMintInfo[]',
+            name: 'names',
+            type: 'tuple[]',
+          },
         ],
         internalType: 'struct Marketplace.PaymentVoucher',
         name: 'voucher',
@@ -410,7 +440,7 @@ export const mintManagerAbi = [
           {
             components: [
               {
-                internalType: 'contract IERC721Upgradeable',
+                internalType: 'contract Registry',
                 name: 'registry',
                 type: 'address',
               },
