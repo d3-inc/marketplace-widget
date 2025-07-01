@@ -87,11 +87,7 @@ export const getWagmiConfig = (config: WidgetConfig) => {
     cacheTime: DEFAULT_POLLING_INTERVAL,
     pollingInterval: DEFAULT_POLLING_INTERVAL,
     transports: {
-      [mainnet.id]: fallback([
-        unstableConnector(injected),
-        http('https://cloudflare-eth.com/'),
-        http(),
-      ]),
+      [mainnet.id]: fallback([unstableConnector(injected), http('https://eth.drpc.org'), http()]),
       [coreMainnet.id]: fallback([unstableConnector(injected), http()]),
       [shibariumMainnet.id]: fallback([unstableConnector(injected), http()]),
       [victionMainnet.id]: fallback([unstableConnector(injected), http()]),
