@@ -103,7 +103,6 @@ export const useCryptoTransaction = ({ setIsNetworkUpdated }: UseCryptoTransacti
           hash: approvalHash as `0x${string}`,
         });
       }
-
       const namesArgs = voucher.names?.map((name) => [
         name.registry,
         name.label,
@@ -121,7 +120,6 @@ export const useCryptoTransaction = ({ setIsNetworkUpdated }: UseCryptoTransacti
         voucher.orderId,
         namesArgs,
       ];
-
       const simulateRequest = await publicClient?.simulateContract({
         chain: targetChain,
         address: selectedPaymentToken?.contractAddress as `0x${string}`,
